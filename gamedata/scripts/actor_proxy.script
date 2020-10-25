@@ -1,0 +1,146 @@
+--[[------------------------------------------------------------------------------------------------------------------
+Класс "actor_proxy". Обеспечивает поддержку актёра, даже если он в офлайне.
+Чугай Алексадр
+--------------------------------------------------------------------------------------------------------------------]]
+class "actor_proxy"
+
+-- конструктор
+function actor_proxy:__init()
+	self.initialized = false
+end
+
+-- инициализация.
+-- происходит только в момент первого после старта симулятора обращения.
+function actor_proxy:init()
+	if not self.initialized then
+		self.online      = false
+		self.alife       = alife()
+
+		if self.alife then
+			self.actor_id    = self.alife:actor().id
+		end
+
+		self.actor       = nil
+
+		self.initialized = true
+	end
+end
+
+-- деинициализация.
+-- происходит в момент дерегистрации серверных объектов.
+-- вызывается из se_smart_terrain:on_unregister() TODO remove this hack
+function actor_proxy:deinit()
+	if self.initialized then
+
+		self.alife = nil
+		self.actor = nil
+
+		self.initialized = false
+	end
+end
+
+-- Получение ID игрока
+function actor_proxy:id()
+	self:init()
+
+	return self.actor_id
+end
+
+function actor_proxy:has_info( name )
+	self:init()
+
+	has_alife_info(name)
+end
+
+function actor_proxy:dont_has_info( name )
+	self:init()
+
+	if self.online then
+		return not has_alife_info( name )
+	else
+		return not has_alife_info( self.actor_id, name )
+	end
+end
+
+-------------------------------------------------------------------------------------
+LEVEL_LOGO_RESETTED = false
+
+--Обновление логотипов уровней при загрузке сейва.
+function update_level_logo(level_name)
+	local FS = getFS()
+	local oFile = FS:update_path("$game_textures$", "intro\\sol_level.dds")
+	local sFile = FS:update_path("$game_textures$", "intro\\"..level_name..".dds")
+	FS:file_copy(sFile, oFile)
+end
+
+--Обновление рандомных подсказок при загрузке сейва.
+function game_NB()
+	local uFileSystem = getFS()
+	local flist = uFileSystem:file_list_open("$game_textures$", "intro\\nb\\", FS.FS_ListFiles)
+	local f_cnt = flist:Size()
+	if f_cnt > 0 then
+		local nmb = f_cnt - 1
+		local rnd = math.random(nmb)
+		local oFile = uFileSystem:update_path("$game_textures$", "intro\\sol_tips.dds")
+		local sFile = uFileSystem:update_path("$game_textures$", "intro\\nb\\nota_"..rnd..".dds")
+		uFileSystem:file_copy(sFile, oFile)
+	end
+	flist:Free() --это важно, если не используется file_list_open_ex !
+end
+
+--Копирование дефолтных подсказок и и логотипа уровня при НИ.
+function GNEW()
+	local uFileSystem = getFS()
+
+	local iFile = uFileSystem:update_path("$game_textures$", "intro\\sol_level.dds")
+	local dFile = uFileSystem:update_path("$game_textures$", "intro\\def.dds")
+	uFileSystem:file_copy(dFile, iFile)
+
+	local eFile = uFileSystem:update_path("$game_textures$", "intro\\sol_tips.dds")
+	local nFile = uFileSystem:update_path("$game_textures$", "intro\\nb\\nota_0.dds")
+	uFileSystem:file_copy(nFile, eFile)
+end
+
+local function update_on_actor_destroy()
+  local t = {}
+  local path = getFS():update_path( "$game_saves$", "" )
+  --
+  stdfs.directory_iterator( path, function( file )
+    if file.extension == ".sav" then
+      table.insert( t, {
+        [ "name"  ] = file.short_filename,
+        [ "modif" ] = file.last_write_time,
+     })
+    end
+  end )
+  --
+  table.sort( t, function( a, b ) return b.modif < a.modif end )
+  --
+  if #t > 0 then
+    update_level_logo(CSavedGameWrapper(t[1].name):level_name())
+  end
+  --
+  game_NB()
+end
+-------------------------------------------------------------------------------------
+
+
+-- рождение актёра в онлайн
+function actor_proxy:net_spawn( obj )
+	self:init()
+
+	self.online = true
+	self.actor  = obj
+end
+
+-- уход актёра из онлайна
+function actor_proxy:net_destroy()
+	self:init()
+
+	self.online = false
+	self.actor  = nil
+	--
+	if not LEVEL_LOGO_RESETTED then
+		update_on_actor_destroy()
+	end
+end

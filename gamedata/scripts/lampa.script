@@ -1,0 +1,130 @@
+----СХЕМА "ПРОБЛЕМЫ СО СВЕТОМ", СТАДИЯ ВЫБРОСА 1, ИНИЦИАЛИЗАЦИЯ, by _Sk8_AsTeR_
+
+local timer_1
+local timer_2
+local razn
+local now_time
+--local tbl = {"yan_lamp3","yan_lamp6"}
+local tbl = {}
+local state = 1
+local schetchik
+
+function check_schetchik()
+
+return schetchik >= 250
+end
+
+function check_schetchik_disable()
+state = 3
+for i, obj in pairs(tbl) do
+local hl = obj:get_hanging_lamp()
+if hl ~= nil then hl:turn_on() end
+end
+
+
+end
+
+function check_timer_2()
+now_time = amk.game_seconds()
+local rnd = math.random
+	if timer_2 ~= nil then timer_2 = timer_2 elseif timer_2 == nil then timer_2 = now_time + rnd() end
+--razn = timer - amk.game_seconds()
+--amk.send_tip(razn, razn, 1, 15, "common_channel")
+return amk.game_seconds() > timer_2
+end
+
+function check_timer_1()
+now_time = amk.game_seconds()
+local rnd = math.random
+	if timer_1 ~= nil then timer_1 = timer_1 elseif timer_1 == nil then timer_1 = now_time + rnd() end
+--razn = timer_1 - amk.game_seconds()
+--amk.send_tip(razn, razn, 1, 15, "common_channel")
+return amk.game_seconds() > timer_1
+end
+
+function light_off()
+if state == 1 then
+for i, obj in pairs(tbl) do
+--amk.send_tip(obj:name(),"off",1,15,"common_channel")
+local hl = obj:get_hanging_lamp()
+if hl ~= nil then hl:turn_off() end
+level.add_call(check_timer_1, light_on)
+end
+timer_1 = nil
+
+end
+state = 0
+schetchik = schetchik + 1
+end
+
+function light_on()
+if state == 0 then
+for i, obj in pairs(tbl) do
+--amk.send_tip(obj:name(),"on",1,15,"common_channel")
+local hl = obj:get_hanging_lamp() 
+if hl ~= nil then hl:turn_on() end
+level.add_call(check_timer_2, light_off)
+end
+timer_2 = nil
+end
+state = 1
+schetchik = schetchik + 1
+end
+
+--[[function aster_timer(obj)
+--local timer
+local lamp = tbl
+	
+	for i, hl in pairs(tbl) do
+	function action_lamp_off()
+		timer = nil
+		hl:turn_off()
+		level.add_call(check_timer, action_lamp_on)
+	end
+	function action_lamp_on()
+		timer = nil
+		hl:turn_on()
+--		level.add_call(check_timer, action_lamp_off)
+	end
+level.add_call(check_timer, light_off)
+end
+end--]]
+
+function lampa()
+
+tbl = {}
+state = 1
+schetchik = 0
+local id, obj, name, hl
+	for id=0, 65535 do
+		obj = level.object_by_id(id)
+--		if obj ~= nil and (string.find(obj:name() ,"yan_lamp3") or string.find(obj:name() ,"yan_lamp6"))
+		if obj ~= nil and string.find(obj:name(), "lamp") and level.name() == level.name()
+		then
+--			local hl = obj:get_hanging_lamp()
+--			if obj ~= nil then
+				table.insert(tbl, obj)
+--				aster_timer(hl)
+--				level.add_call(check_timer, light_off)
+				light_off()
+			end
+		end
+	
+	level.add_call(check_schetchik, check_schetchik_disable)
+	end
+--end
+		
+function morgaem()
+--lampa()	
+local id, obj, name, hl
+	for id=0, 65535 do
+		obj = level.object_by_id(id)
+--	for _,v in pairs(tbl) do
+	for i = 1, #tbl do
+			local hl = tbl[i]:get_hanging_lamp()
+			if hl ~= nil then
+				aster_timer(hl)
+			end
+	end
+end
+end

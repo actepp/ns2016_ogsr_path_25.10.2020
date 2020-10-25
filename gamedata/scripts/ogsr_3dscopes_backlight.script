@@ -1,0 +1,47 @@
+-- Подсветка 3д прицелов по нажатию клавиши
+-- Идея тут простая, при нажатии клавиши подсветки, подменяем текстуры из папки wpn\\lense на аналогичные из wpn\\lense_light.
+-- KRodin (c) 15.07.2020
+
+local var = script_name().."scopes_backlight_enabled"
+
+if not _G.XVARS then
+	_G.XVARS = get_stored_vars()
+end
+
+
+local function actor_keeps_wpn_with_optical_sight() --Держит ли актор в руках оружие с оптическим прицелом
+	local wpn = db.actor:active_item()
+
+	return wpn and wpn:is_weapon_magazined() and ( bit_and(wpn:get_addon_flags(), 1) ~= 0 or system_ini():r_u32(wpn:section(), "scope_status") == 1 )
+end
+
+local function enable_backlight(enabled)
+	local textures_found = texture_find("wpn\\lense\\*")
+	--log3("~~textures_found is %s", textures_found)
+
+	for name, tex in pairs(textures_found) do
+		local backlight_name = name:gsub('wpn\\lense\\', 'wpn\\lense_light\\')
+		--log3("--backlight_name is [%s]", backlight_name)
+		if getFS():exist("$game_textures$", backlight_name..".dds") then
+			tex:load(enabled and backlight_name or name)
+		end
+	end
+end
+
+
+function on_first_update()
+	--log3("~~XVARS.var: [%s]", not not XVARS.var)
+	enable_backlight(not not XVARS.var)
+end
+
+function on_key_down(key, bind)
+	if bind ~= key_bindings.kSWITCH_3DSCOPE_BACKLIGHT then return end
+	if not get_console():get_bool("g_3d_scopes") then return end
+	if level.main_input_receiver() then return end
+	if not actor_keeps_wpn_with_optical_sight() then return end
+
+	local enabled = not XVARS.var
+	XVARS.var = enabled
+
+	enable_backlight(enabled)
+end

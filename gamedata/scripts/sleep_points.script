@@ -1,0 +1,1103 @@
+-- lsclon
+
+
+hide={
+l01_escape={
+--Переход на свалку
+ {aviable=true,
+	center=310637},
+--Гулаг Лиса
+ {aviable=true,community="stalker",
+	center=439157},
+--Заброшенная ферма
+ {aviable=true,community="stalker",
+	center=269383},
+--Мельница
+ {aviable=true,community="military",
+	center=290013},
+--Закуток Крысюка
+ {aviable=true,
+	center=265782},
+--Старое АТП для бандюков
+ {aviable=true,community="bandit",
+	center=409680},
+--Старое АТП для сталков
+ {aviable=true,community="stalker",
+	center=416327},
+--Переход в темную долину
+ {aviable=true,community="stalker",
+	center=592593},
+--Под автомостом
+ {aviable=true,community="stalker",
+	center=228448},
+--Вагончик у Толика
+ {aviable=true,community="stalker",
+	center=186576},
+--Точки в ДН
+ {aviable=true,community="stalker",
+	center=76656},
+{aviable=true,community="stalker",
+	center=14444},
+{aviable=true,community="stalker",
+	center=34088},
+{aviable=true,community="stalker",
+	center=39933},
+{aviable=true,community="stalker",
+	center=45305},
+{aviable=true,community="stalker",
+	center=64301},
+ 
+--Командный пункт на блокпосту
+ {aviable=true,community="military",
+	center=109717},
+--Казарма на блокпосту
+ {aviable=true,community="military",
+	center=133789}
+},
+l02_garbage={
+--Блок пост Долга
+ {aviable=true,community="dolg",
+	center=216645},
+--Компресорная, возле развалин||Aster ГДЕ ЭТО? О_о
+ {aviable=true,
+	center=236477},
+--Тунель
+ {aviable=true,community="bandit",
+	center=19002},
+--Депо
+--Ангар
+ {aviable=true,
+	center=106499},
+ {aviable=true,
+	center=104803},
+ {aviable=true,
+	center=119519},
+--Кулинар
+ {aviable=true,community="stalker",
+    center=17000}
+ },
+
+l03_agroprom={
+--Вагончик дезертира 
+ {aviable=true,
+    center=40286},
+--Туннель
+ {aviable=true,
+    center=426290},
+--Камаз на дороге
+ 
+--Вагон у вертолета
+ {aviable=true,
+    center=211646},
+--Северный комплекс
+--Вагон 
+ {aviable=true,community="bandit",
+    center=235289},
+--Центральное здание 3-й этаж
+ {aviable=true,community="stalker",
+    center=232427},
+--Котельная
+ {aviable=true,community="stalker",
+    center=259332},
+--Восточное крыло
+ {aviable=true,
+    center=275524},
+
+--Казарма Шерстюка
+ {aviable=true,
+    center=76966},
+--Казарма
+ {aviable=true,
+    center=85141},
+--Учебка
+ {aviable=true,
+    center=55985},
+--Западное крыло Центра
+ {aviable=true,
+    center=113601},
+--Восточное крыло Центра
+ {aviable=true,
+    center=84271},
+--by aster
+
+ {aviable=true,
+    center=132063},
+
+ {aviable=true,
+    center=58247},
+
+ {aviable=true,
+    center=232427},
+
+ {aviable=true,
+    center=282920},
+
+ {aviable=true,
+    center=213247},
+
+ {aviable=true,
+    center=282920},
+
+ {aviable=true,
+    center=306525}
+},
+l04_darkvalley={
+--Заправка
+ {aviable=true,community="stalker",
+	center=297913,
+	},
+--Вагончик перед базой бандитов
+ {aviable=true,
+	center=256443},
+--Камаз
+ 
+--Рабочий вагончик
+ {aviable=true,community="dolg",
+	center=221309},
+--Труба под дорогой на фабрику
+ 
+--Надстройка на крыше
+ {aviable=true,
+	center=352139},
+--Перед лестницей
+ {aviable=true,community="bandit",
+	center=358934},
+--Перед спуском в лабу
+ {aviable=true,
+	center=330322},
+--Подвал перед лабой
+ {aviable=true,community="bandit",
+	center=320892},
+
+--Южное строение
+ {aviable=true,community="military",
+	center=321616},
+--База сталкеров
+--Кидалы
+ {aviable=true,community="stalker",
+	center=18820},
+--Восточное здание
+ {aviable=true,community="stalker",
+	center=63032},
+--Сарай
+ {aviable=true,community="stalker",
+	center=26583},
+--База бандитов
+--Закуток в недостроеных гаражах
+ 
+--Подвал на весовой
+ {aviable=true,
+	center=217818},
+--Канализация
+ 
+--Северо-западное крыло
+ {aviable=true,community="bandit",
+	center=164164},
+--Юго-западное крыло
+ {aviable=true,community="bandit",
+	center=161825},
+--Долгострой
+--3-й этаж
+ {aviable=true,community="bandit",
+	center=225386},
+--2-й этаж
+ {aviable=true,community="bandit",
+	center=225278},
+--1-й этаж
+ {aviable=true,community="bandit",
+	center=225428},
+ {aviable=true,community="bandit",
+	center=225277},
+--Аппартаменты Борова
+ {aviable=true,community="bandit",
+	center=223234},
+--Лестница и туалет
+ {aviable=true,community="bandit",
+	center=192520},
+--Подвал
+ {aviable=true,community="bandit",
+	center=225427},
+--Пленный долговец
+ {aviable=true,community="dolg",
+	center=232795}
+},
+l05_bar={
+
+--Башня
+ {aviable=true,
+	center=41196},
+--Недействующая арена
+ {aviable=true,
+	center=38819},
+--Ангар на северном входе
+ {aviable=true,
+	center=31232},
+
+--Ангар на южном входе
+ {aviable=true,
+	center=46356},
+
+--Гараж
+ {aviable=true,community="stalker",
+	center=39899},
+	
+--by aster
+ {aviable=true,community="stalker",
+	center=52736},
+	
+ {aviable=true,community="stalker",
+	center=46355},
+	
+{aviable=true,community="stalker",
+	center=41942},
+	
+{aviable=true,community="stalker",
+	center=52794},
+	
+{aviable=true,community="stalker",
+	center=36343},
+	
+--Южный пост
+ {aviable=true,
+	center=52737}
+
+},
+l06_rostok={
+--Контейнер у вертолета
+ {aviable=true,
+	center=11423},
+--Переход со снайперами(верх)
+ {aviable=true,
+	center=46580},
+
+--Переход со снайперами(север)
+ {aviable=true,
+	center=46723},
+--Контейнер за переходом
+ {aviable=true,
+	center=45622},
+
+--Переход со снайперами(юг)
+ {aviable=true,
+	center=46697},
+--Гараж с жарками
+ {aviable=true,
+	center=43543},
+
+--Стройка
+ {aviable=true,
+	center=20526}
+},
+l07_military={
+--Вагончик с Джеймсом
+ {aviable=true,
+	center=9492},
+--СВОБОДА
+--Хутор за деревней кровососов
+ {aviable=true,community="killer",
+	center=133556},
+
+--вагончик
+ {aviable=true,
+	center=383428},
+--Вагончик у сталков
+ {aviable=true,
+	center=241561},
+--Деревня кровососов
+--башня
+ 
+--пара комнат с одним окном
+ {aviable=true,
+	center=27806},
+ {aviable=true,
+	center=64633},
+--Домик Угрюмого
+ {aviable=true,
+	center=102257},
+
+--Хутор на переходе с бара
+ {aviable=true,
+	center=134262},
+--База Свободы
+
+--столовая
+ {aviable=true,
+	center=236292},
+--барак у туннеля
+ {aviable=true,
+	center=369573},
+--казарма
+ {aviable=true,
+	center=312959}
+
+},
+l08_yantar={
+--Бункер Сахарова
+ {aviable=true,
+	center=57446},
+--Дренажная труба
+ {aviable=true,
+	center=109934},
+
+--подвал с переходом в Х-16
+ {aviable=true,
+	center=38255}
+},
+l10_radar={
+
+--Переход в ТД
+ {aviable=true,
+	center=227097},
+
+--У перехода в Варлаб
+ {aviable=true,
+	center=77780},
+--Вагончик у снайпера
+ {aviable=true,
+	center=180652},
+--Блокпост на переходе с АС
+ {aviable=true,
+	center=220554},
+
+--вход в тунель
+ {aviable=true,
+	zone={{p1={108.0,-7.75,-27.0},
+		p2={95.0,-3.75,-21.0}}}},
+--туннель
+ {aviable=true,
+	center=51597},
+
+--домик Сяка
+ {aviable=true,
+	center=21729}
+},
+l11_pripyat={
+--Снайперские точки
+ {aviable=true,
+	center=211483},
+ {aviable=true,
+	center=143917},
+ {aviable=true,
+	center=143074},
+ {aviable=true,
+	center=86597},
+ {aviable=true,
+	center=85914},
+ {aviable=true,
+	center=143034},
+ {aviable=true,
+	center=143852},
+ {aviable=true,
+	center=86577},
+ {aviable=true,
+	center=85877},
+ {aviable=true,
+	center=79949},
+
+--Восточный гастроном
+ {aviable=true,
+	center=261184},
+--Дом культуры
+ {aviable=true,
+	center=96174},
+--Канализация в центре
+ {aviable=true,
+	center=99625},
+--Гостиница
+ {aviable=true,
+	center=232826},
+--Западное здание на площади
+ {aviable=true,
+	center=46430},
+--Западный гастроном
+ {aviable=true,
+	center=5707,
+	entrances={8314,12948}},
+--Западный подземный переход
+ {aviable=true,
+	center=84595},
+--Восточный подземный переход
+ {aviable=true,
+	center=253592},
+
+--Подземная парковка
+ {aviable=true,
+	center=198134},
+
+--юго-восточное крыло
+ {aviable=true,
+	center=120649},
+--юго-западное крыло
+ {aviable=true,
+	center=159569},
+
+--коридор с лестницей
+ {aviable=true,community="military",
+	center=16334},
+--под лестницей
+ {aviable=true,
+	center=223249},
+--коридор в дальнем крыле
+ {aviable=true,community="dolg",
+	center=238946}
+},
+atp_for_test22={
+
+--"дом Шустрого"
+ {aviable=true,community="bandit",
+	center=537903},
+--"мельница Кордона"
+ {aviable=true,community="bandit",
+	center=601837},
+--"казарма блокпоста"
+ {aviable=true,community="bandit",
+	center=626298},
+--Сарай возле базы
+ {aviable=true,
+	center=472652},
+--Сарай с диском
+ {aviable=true,
+	center=835286},
+--Сарай недалеко от Калинина
+ {aviable=true,community="military",
+	center=291393},
+--База Калинина
+ {aviable=true,community="stalker",
+	center=125767}
+},
+aver={
+--Пещера Гинеколога
+ {aviable=true,community="stalker",
+	center=168784},
+--Вагончик Химеры
+ {aviable=true,community="sniper",
+	center=1123969},
+--Пещера Клыка и Пилигрима
+ {aviable=true,community="stalker",
+	center=902997},
+--Южные свободные снайперы
+ {aviable=true,community="sniper",
+	center=741293},
+--Южный гулаг снайперов
+ {aviable=true,community="sniper",
+	center=1444818},
+--Камень на переходе на АС
+ {aviable=true,
+	center=1391935},
+--Северный гулаг снайперов
+ {aviable=true,community="sniper",
+	center=719300},
+--Возле входа в пещеру Мухи
+ {aviable=true,community="stalker",
+	center=215441},
+--Пещера Мухи
+ {aviable=true,community="stalker",
+	center=224036},
+--Для Филина и Ко.
+ {aviable=true,community="green",
+	center=635435}
+}, 
+dead_city={
+--Домик сталков
+ {aviable=true,community="stalker",
+	center=542889},
+--Здание КООПторга
+ {aviable=true,community="lastday",
+	center=326154},
+--Северный домик у бандитов
+ {aviable=true,community="bandit",
+	center=26448},
+--Южный домик у бандитов
+ {aviable=true,community="bandit",
+	center=54571},
+--Северный домик у наёмников
+ {aviable=true,community="killer",
+	center=227528},
+--Южный домик у наёмников
+ {aviable=true,community="killer",
+	center=263189},
+--Домик Парфюмера
+ {aviable=true,
+	center=126008},
+--Здание исполкома
+ {aviable=true,community="lastday",
+	center=236490},
+--Подъезды многоэтажек:
+--три подряд
+ {aviable=true,
+	center=397997},
+ {aviable=true,
+	center=412851},
+ {aviable=true,
+	center=388003},
+ {aviable=true,
+	center=371748},
+--г-образная
+ {aviable=true,
+	center=210122},
+ {aviable=true,
+	center=229941},
+ {aviable=true,
+	center=220876},
+--отдельно стоящая
+ {aviable=true,
+	center=183101},
+ {aviable=true,
+	center=164673},
+--Южная деревня
+ {aviable=true,
+	center=350107},
+ {aviable=true,
+	center=384501},
+--Умный Контрик
+ {aviable=true,
+	center=283575}
+},
+generators={
+--База сталкеров
+ {aviable=true,community="stalker",
+	center=198379},
+ {aviable=true,
+	center=192117},
+--Лагерь Одноногого
+ {aviable=true,
+	center=34537},
+
+--Переход в Госпиталь
+ {aviable=true,
+	center=424996},
+--Тунель возле базы
+ {aviable=true,
+	center=462940},
+--База
+ {aviable=true,
+	center=514149},
+ {aviable=true,
+	center=519770},
+--Переход в Варлаб
+ {aviable=true,
+	center=536253}
+},
+hospital={
+--Первый отсек
+--подвал и лестница
+ {aviable=true,
+	center=2931},
+--комната слева
+ {aviable=true,
+	center=5882},
+--восточная лестница
+ {aviable=true,
+	center=7601},
+--западная лестница
+ {aviable=true,
+	center=372},
+
+--северо-восточная лестница
+ {aviable=true,
+	center=7812},
+--северо-западная лестница
+ {aviable=true,
+	center=113},
+--юго-восточная лестница
+ {aviable=true,
+	center=7799},
+
+--переход с второго уровня
+ {aviable=true,
+	center=594},
+--пещера
+ {aviable=true,
+	center=7194},
+--второй этаж - восточная сторона
+ {aviable=true,
+	center=7022},
+ {aviable=true,
+	center=7208},
+ {aviable=true,
+	center=7011},
+ {aviable=true,
+	center=6211},
+--у Черного Доктора
+ {aviable=true,
+	center=2806},
+--Третий этаж
+ {aviable=true,
+	center=3015}
+},
+jupiter={
+--Тунель на северо-западе
+ {aviable=true,
+	center=217187},
+--Разрушенная деревня
+ {aviable=true,
+	center=129501},
+--Военная база
+ {aviable=true,
+	center=160223},
+--Контейнерная станция
+ {aviable=true,
+	center=372},
+--Тунель на юге
+ {aviable=true,
+	center=360755},
+--Что-то на северо-востоке
+ {aviable=true,
+	center=1324786},
+--Туалет на полустанке
+ {aviable=true,
+	center=834018},
+ {aviable=true,
+	center=825725},
+--Блок пост
+ {aviable=true,
+	center=732795},
+--Вагончики у карьера
+ {aviable=true,
+	center=992207},
+--Ж-д вокзал
+ {aviable=true,
+	center=635004},
+--Вагончики у карьера
+ {aviable=true,
+	center=992207},
+--Завод
+--Мех. двор
+ {aviable=true,
+	center=1127922},
+--Проходная вправо
+ {aviable=true,
+	center=1283684},
+--Проходная влево
+ {aviable=true,
+	center=1347920},
+--Здание за проходной
+ {aviable=true,
+	center=1273638},
+--Юго-восточное здание
+ {aviable=true,
+	center=1449542},
+--Цех-закрытый Камазом
+ {aviable=true,
+	center=1312431},
+--Цех-проезд закрытый Камазом
+ {aviable=true,
+	center=1353729},
+--Цех-южный вход
+ {aviable=true,
+	center=1378048},
+--Цех с вертолётом
+ {aviable=true,
+	center=1319287},
+--Бункер ученых
+ {aviable=true,
+     center=338418}
+},
+limansk={
+--Первый уровень
+--подвал с ящиками
+ {aviable=true,
+	center=20684},
+--комната над переходом в МГ
+ {aviable=true,
+	center=1838},
+
+--база свободы
+ {aviable=true,
+	center=5797},
+--туннель
+ {aviable=true,
+	center=28635},
+
+--дом с проходом на уровень
+ {aviable=true,
+	center=41462},
+--гараж перед домом
+ {aviable=false,
+	zone={{p1={24.7,-5.4,-85.0},
+		p2={21.8,-2.4,-80.4}}}},
+--Третий уровень
+--гараж перед стройкой
+ {aviable=true,
+	center=15239,
+	entrances={15227,15172},
+	zone={{p1={-18.1,-4.5,164.5},
+		p2={-22.6,-1.5,169.1}}}},
+--дом с проходом на уровень
+ {aviable=true,
+	center=40079,
+	entrances={41564},
+	zone={{p1={37.7,0.5,41.2},
+		p2={34.4,3.5,43.8}},
+		{p1={20.5,0.5,41.3},
+		p2={18.5,3.5,45.4}},
+		{p1={28.3,-2.9,46.3},
+		p2={17.8,0.5,50.8}}}},
+--камаз
+ {aviable=false,
+	zone={{p1={69.1,-5.0,49.4},
+		p2={68.4,-5.0,47.1},
+		p3={65.1,-2.0,48.3}}}},
+--подстанция перед домом
+ {aviable=false,
+	zone={{p1={-0.7,-6.2,25.3},
+		p2={-8.2,-3.2,28.0}}}},
+--Стройка
+--контейнер
+ {aviable=false,
+	zone={{p1={-5.0,12.5,194.4},
+		p2={-6.2,15.0,196.5}},
+		{p1={4.5,12.7,200.7},
+		p2={2.3,15.2,203.9}}}},
+--первый этаж
+ {aviable=true,
+	center=45240,
+	entrances={39410},
+	zone={{p1={23.0,13.2,195.7},
+		p2={20.0,16.2,200.3}},
+		{p1={40.0,13.2,177.6},
+		p2={23.0,16.2,200.3}}}},
+--База монолита
+ {aviable=true,
+	center=58670,
+	entrances={58927},
+	zone={{p1={77.3,6.8,248.0},
+		p2={73.6,9.8,252.5}},
+		{p1={85.2,6.8,246.0},
+		p2={79.5,9.8,249.0}}}}
+},
+lost_village={
+--Верхний хутор
+--подвал
+ {aviable=false,
+	zone={{p1={16.3,9.2,26.7},
+		p2={0.3,14.0,55.9}}}},
+--сарай
+ {aviable=true,
+	center=14221,
+	entrances={14642},
+	zone={{p1={3.9,15.0,36.2},
+		p2={-0.7,18.0,41.0}}}},
+--штаб Колмогора
+ {aviable=true,
+	center=21023,
+	entrances={20170},
+	zone={{p1={27.4,13.2,23.0},
+		p2={13.8,16.2,29.0}}}},
+--дом за мостом
+ {aviable=true,
+	center=36502,
+	entrances={37126},
+	zone={{p1={77.4,9.5,25.1},
+		p2={73.5,12.5,28.6}}}},
+--Нижняя деревня
+--подвал
+ {aviable=false,
+	zone={{p1={34.0,-3.55,-17.5},
+		p2={24.6,2.5,3.3}},
+		{p1={30.7,-0.5,-21.0},
+		p2={28.6,4.7,-17.5}},
+		{p1={30.7,1.7,-23.8},
+		p2={28.6,6.5,-21.0}},
+		{p1={30.7,3.5,-26.4},
+		p2={28.6,8.2,-23.8}},
+		{p1={27.8,5.2,-33.7},
+		p2={31.8,9.0,-26.4}}}},
+--пара домов
+ {aviable=true,
+	center=15506,
+	entrances={13800},
+	zone={{p1={11.96,8.5,-40.0},
+		p2={2.16,11.5,-32.0}},
+		{p1={2.16,8.5,-40.82},
+		p2={-1.3,11.5,-38.16}},
+		{p1={2.31,6.2,-40.82},
+		p2={-1.3,9.0,-36.58}}}},
+ {aviable=true,
+	center=36631,
+	entrances={36398},
+	zone={{p1={79.5,4.0,-65.9},
+		p2={72.3,7.0,-56.1}},
+		{p1={73.9,4.0,-69.4},
+		p2={71.3,7.0,-65.9}},
+		{p1={75.5,1.8,-69.4},
+		p2={71.3,4.5,-65.8}}}},
+--Туннель
+ {aviable=true,
+	center=27574,
+	entrances={28565},
+	zone={{p1={52.7,3.4,79.0},
+		p2={45.0,10.5,101.0}}}},
+--Магазин
+ {aviable=true,
+	center=4085,
+	entrances={5139},
+	zone={{p1={-41.8,1.9,-11.7},
+		p2={-47.1,5.5,4.3}}}},
+},
+marsh={
+
+--Лодочная станция на северо-западе
+ {aviable=true,
+	center=53208},
+--Хутор Мстителей на северо-востоке
+ {aviable=true,community="sniper",
+	center=517690},
+--Подвал на хуторе с водонапорной башней
+ {aviable=true,
+	center=118647},
+--Мех. двор
+ {aviable=true,
+	center=417770},
+--Плавучая база
+ {aviable=true,
+	center=136573},
+
+--by aster
+
+ {aviable=true,
+	center=493664},
+
+ {aviable=true,
+	center=478023},
+
+ {aviable=true,
+	center=485691},
+
+ {aviable=true,
+	center=202556},
+
+ {aviable=true,
+	center=160576},
+
+ {aviable=true,
+	center=163810},
+
+ {aviable=true,
+	center=76921},
+
+ {aviable=true,
+	center=51824},
+
+ {aviable=true,
+	center=51000},
+
+ {aviable=true,
+	center=51875},
+
+ {aviable=true,
+	center=53786},
+
+--Домик Дьяка
+ {aviable=true,
+	center=478570},
+--Церковь
+ {aviable=true,
+	center=326484},
+--Хутор с телепортом на базу
+ {aviable=true,
+	center=159888},
+
+--Укрытие для бармена
+ {aviable=true,
+	center=79667}
+},
+pripyat={
+--Прачечная
+ {aviable=true,
+	center=375717},
+--Общаги с кафетерием
+--в кафетерии
+ {aviable=true,
+	center=230514},
+--западное крыло
+ {aviable=true,
+	center=220905},
+ {aviable=true,
+	center=214313},
+--восточное крыло
+ {aviable=true,
+	center=290548},
+--отдельно-стоящая
+ {aviable=true,
+	center=272021},
+
+--Магазин "Книги"
+ {aviable=true,
+	center=38984},
+--Подвал Гастронома
+ {aviable=true,
+	center=34415},
+--Гастроном
+ {aviable=true,
+	center=29458},
+--Детский сад
+ {aviable=true,
+	center=112665},
+
+--восточное крыло
+ {aviable=true,
+	center=419210},
+--западное крыло
+ {aviable=true,
+	center=453483},
+
+--южное крыло
+ {aviable=true,
+	center=124447},
+--северное крыло
+ {aviable=true,
+	center=118983},
+
+--южное крыло и подвал
+ {aviable=true,
+	center=230005},
+--КБО
+--второй этаж
+ {aviable==true,
+	center=209423},
+--первый этаж
+ {aviable=true,
+	center=214864},
+--Кинотеатр "Прометей"
+ {aviable=true,
+	center=314693},
+
+--Универмаг
+ {aviable=true,
+	center=79465}
+},
+red_forest={
+--В лесу
+--небольшие пещеры
+ {aviable=false,
+	zone={{p1={205.3,3.6,114.0},
+		p2={196.0,8.0,124.70}}}},
+ {aviable=false,
+	zone={{p1={256.0,4.4,103.0},
+		p2={242.0,9.3,114.0}}}},
+--шахта
+ {aviable=true,
+	center=5231,
+	entrances={6168,4321},
+	zone={{p1={-95.5,-7.3,-65.5},
+		p2={-200.0,8.3,36.0}}}},
+--туннель охотников
+ {aviable=true,
+	center=119164,
+	entrances={118055,121084},
+	zone={{p1={184.6,-0.7,-224.4},
+		p2={174.0,4.0,-194.4}},
+		{p1={184.6,-0.7,-194.4},
+		p2={179.0,4.0,-185.5}},
+		{p1={170.0,-0.7,-188.5},
+		p2={133.0,4.0,-178.0}}}},
+--Домик Лесника
+ {aviable=true,
+	center=82754,
+	entrances={82159},
+	zone={{p1={31.5,-0.5,23.1},
+		p2={22.5,4.0,27.0}}}},
+--Вагончик
+ {aviable=false,
+	zone={{p1={14.9,-0.6,-40.9},
+		p2={12.0,-0.6,-41.0},
+		p3={11.7,2.4,-36.4}}}},
+--Бункер перед мостом
+ {aviable=true,
+	center=12020,
+	entrances={9356},
+	zone={{p1={-131.23,-1.69,-235.95},
+		p2={-101.5,-1.05,-235.91},
+		p3={-76.31,15.29,-164.04}}}},
+--За мостом
+--коллектор
+ {aviable=false,
+	zone={{p1={-150.3,-7.4,-289.1},
+		p2={-159.3,-4.4,-287.1}}}},
+--туннель
+ {aviable=true,
+	center=2074,
+	entrances={3904},
+	zone={{p1={-180.0,-0.6,-288.0},
+		p2={-199.0,4.5,-306.5}}}},
+--бункер 
+ {aviable=true,community="killer",
+	center=888,
+	entrances={4163,5810},
+	zone={{p1={-169.5,-0.6,-303.4},
+		p2={-209.09,4.5,-333.6}}}}
+},
+zaton={
+--Лесопилка
+ {aviable=true,
+	center=319205,
+	entrances={297112,308444},
+	zone={{p1={-310.73,9.24,412.07},
+		p2={-318.73,11.24,420.07}}}},
+--Погрузочная станция
+ {aviable=true,
+	center=1368018,
+	entrances={1357976,1373237},
+	zone={{p1={239.78,7.5,-8.42},
+		p2={231.78,10.5,-0.42}}}},
+--Заводик на востоке
+ {aviable=true,
+	center=1649843,
+	entrances={1649840},
+	zone={{p1={420.22,35.7,-15.59},
+		p2={416.22,38.7,-10.59}}}},
+--Деревня с эстрадой
+ {aviable=true,
+	center=581562,
+	entrances={574935,576257},
+	zone={{p1={-177.85,8.96,74.96},
+		p2={-181.85,11.96,79.96}}}},
+--Заправка
+ {aviable=true,
+	center=612211,
+	entrances={613642,620849,631046,603670},
+	zone={{p1={-162.31,19.5,-167.38},
+		p2={-167.31,21.5,-162.38}}}},
+--Тонель под дорогой
+ {aviable=true,
+	center=276660,
+	entrances={318858,230739},
+	zone={{p1={-333.0,-7.95,141.0},
+		p2={-343.0,-4.95,161.0}}}},
+--Строение на юге
+ {aviable=true,
+	center=651105,
+	entrances={658243},
+	zone={{p1={-142.63,23.0,-432.8},
+		p2={-148.63,26.0,426.8}}}},
+--Пещеры в проломах
+ {aviable=true,
+	zone={{p1={-87.0,-25.0,-236.0},
+		p2={-154.0,18.0,-170.0}}}},
+ {aviable=true,
+	zone={{p1={-30.0,-4.5,190.0},
+		p2={-115.0,11.5,280.0}}}},
+ {aviable=true,
+	zone={{p1={89.0,36.3,-490.0},
+		p2={40.0,47.3,-450.0}}}},
+--Баржи
+ {aviable=true,
+	center=1187631,
+	entrances={1207033,1201549,1174489},
+	zone={{p1={136.07,-7.9,176.46},
+		p2={122.07,-4.9,190.46}}}},
+ {aviable=true,
+	center=953831,
+	entrances={983947,983933,932862},
+	zone={{p1={11.61,7.5,-8.42},
+		p2={-2.39,10.5,-0.42}}}},
+ {aviable=true,
+	center=1214879,
+	entrances={1202377,1206762},
+	zone={{p1={149.28,-7.37,-143.9},
+		p2={141.28,-4.37,-133.9}}}}
+}}
+anom_count=409 -- общее количество
+anom_sid0=7000 -- стартовый стори ид
+anom_num0=3 -- стартовый номер в all.spawn

@@ -1,0 +1,77 @@
+function on_artefact_take(obj)
+	local s_obj = alife():object(obj:id())
+	if s_obj then
+		local pk = get_netpk(s_obj)
+		if pk:isOk() then
+			local data = pk:get()
+			local tbl = data.custom_data:getTable()
+			if not tbl.artefact_found then
+				xr_statistic.inc_founded_arts_counter()
+				tbl.artefact_found = {}
+				data.custom_data:setTable(tbl)
+				pk:set(data)
+			end
+		end
+	end
+end
+
+local timer 
+
+function inita()
+		if timer ~= nil then return
+		elseif timer == nil then
+			timer = amk.game_minutes() + 4
+		end
+end
+
+function timerr()
+	inita()
+	local now_time = amk.game_minutes()
+	local show = timer - now_time
+	if now_time < timer then
+		return
+	elseif now_time >= timer then
+		check_hunger()
+		timer = nil	
+	end
+end
+
+
+
+
+function check_hunger()
+	for i = 1, 65535 do
+		local s_obj = alife():object(i)
+		if (s_obj) and IsNpcStalker(s_obj) and s_obj:alive() then
+			amk.send_tip("есть попытка", "есть попытка", 1, 15, "common_channel")
+			local pk = get_netpk(s_obj)
+			if pk:isOk() then
+				local data = pk:get()
+				local val = data.custom_data:getTable()
+				if not val.hunger then
+					val.hunger = {100}
+					data.custom_data:setTable()
+					pk:set(data)
+					
+				end
+			end
+		end
+	end
+end
+
+function IsNpcStalker(s_obj)  --(функци¤ проверки услови¤ "?сли сталкер, небо или грин"
+	local m_s_c = ""
+	if (s_obj) then
+			if (s_obj.character_community) then				
+				m_s_c = s_obj:character_community()
+			elseif (s_obj.community) then
+				m_s_c = s_obj:community()
+			end
+	end
+	if (m_s_c == "stalker" or m_s_c == "green" or m_s_c == "ecolog" or m_s_c == "nebo") then
+		if (s_obj.name and s_obj:name() ~= "agr_ratcatcher") then
+--			
+			return true
+		end
+	end
+end

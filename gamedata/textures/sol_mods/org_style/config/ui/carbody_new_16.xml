@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding="UTF-8"?>
+
+<window>
+
+	<main x=0 y=0 width=1024 height=768/>
+	<static_icon x="105" y="16" width="170" height="235" stretch="1">
+		<texture_offset x="-15.5" y="0"/>
+		<texture>ui_charinfo_left</texture>
+	</static_icon>
+	
+	<static_icon x="780" y="16" width="170" height="235" stretch="1">
+		<texture>ui_charinfo_right</texture>
+		<texture_offset x="-15.5" y="0"/>
+	</static_icon>
+
+	<our_bag_static x="2" y="261" width="343" height="474" stretch="1">
+		<texture width="353" height="469">ui\ui_dg_inventory_exchange_trade</texture>
+		<text x="47" y="9.5" font="letterica16" r="238" g="153" b="26" complex_mode="1"/>
+	</our_bag_static>
+
+	<dragdrop_list_our x="22.5" y="33" width="301" height="420"
+			cell_width = "35" cell_height="46" rows_num="9" cols_num="8" 
+			unlimited="1" group_similar="1"/>
+
+	<others_bag_static x="676" y="261" width="343" height="474" stretch="1">
+		<texture mirror="h" width="353" height="469">ui\ui_dg_inventory_exchange_trade</texture>
+		<text x="50" y="9" font="letterica16" r="238" g="153" b="26">st_items</text>
+	</others_bag_static>
+
+	<dragdrop_list_other x="22" y="33" width="301" height="420"
+			cell_width = "35" cell_height="46" rows_num="9" cols_num="8" 
+			unlimited="1" group_similar="1"/>
+
+	<frame_window x="371" y="256" width="300" height="463">
+		<texture></texture>		
+		<_left_top_texture x="5" y="10">ui\ui_inv_info_over_lt</_left_top_texture>
+	</frame_window>
+
+	<descr_static x="-26" y="5" width="335" height="485" stretch="1">
+		<texture width="258" height="495">ui\ui_inv_info_over_b</texture>
+	</descr_static>
+
+	<auto_static x="390" y="268.5" width="220" height="30">
+		<text font="letterica16" r="238" g="153" b="26">ui_st_description</text>
+	</auto_static>
+
+	<top_background x=0 y=0 width=1024 height=128>
+		<texture>ui\ui_top_background</texture>
+	</top_background>
+
+	<bottom_background x=0 y=736 width=1024 height=32>
+		<texture>ui\ui_bottom_background</texture>
+	</bottom_background>
+
+	<take_all_btn x="830" y="725" width="157" height="48" hR="255" hB="83" hG="179" highlight_text="1" stretch="1" hint="ui_st_take_all" accel="kX">
+	<texture>ui_button_main01</texture>
+	<text align="c" font="graffiti22" r="238" g="153" b="26">ui_st_take_all</text>
+	</take_all_btn>
+
+
+</window>
+

@@ -1,0 +1,313 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<encyclopedia>
+
+<article id="lc_1" name="esc_to_garbage" group="lc" sort="1">
+	<texture>ui_esc_to_garbage</texture>
+	<text>enc_esc_to_garbage</text>
+</article>
+
+<article id="lc_2" name="esc_to_marsh" group="lc" sort="1">
+	<texture>ui_esc_to_marsh</texture>
+	<text>enc_esc_to_marsh</text>
+</article>
+
+<article id="lc_3" name="esc_to_darkscape" group="lc" sort="1">
+	<texture>ui_esc_to_darkscape</texture>
+	<text>enc_esc_to_darkscape</text>
+</article>
+
+<article id="lc_4" name="garbage_to_peshera" group="lc" sort="1">
+	<texture>ui_garbage_to_peshera</texture>
+	<text>enc_garbage_to_peshera</text>
+</article>
+
+<article id="lc_5" name="agro_to_peshera" group="lc" sort="1">
+	<texture>ui_agro_to_peshera</texture>
+	<text>enc_agro_to_peshera</text>
+</article>
+
+<article id="lc_6" name="peshera_to_garbage" group="lc" sort="1">
+	<texture>ui_peshera_to_garbage</texture>
+	<text>enc_peshera_to_garbage</text>
+</article>
+
+<article id="lc_7" name="peshera_to_agro" group="lc" sort="1">
+	<texture>ui_peshera_to_agro</texture>
+	<text>enc_peshera_to_agro</text>
+</article>
+
+<article id="lc_8" name="peshera_to_labirint" group="lc" sort="1">
+	<texture>ui_peshera_to_labirint</texture>
+	<text>enc_peshera_to_labirint</text>
+</article>
+
+<article id="lc_9" name="labirint_to_peshera" group="lc" sort="1">
+	<texture>ui_labirint_to_peshera</texture>
+	<text>enc_labirint_to_peshera</text>
+</article>
+
+<article id="lc_10" name="labirint_to_rostok" group="lc" sort="1">
+	<texture>ui_labirint_to_rostok</texture>
+	<text>enc_labirint_to_rostok</text>
+</article>
+
+<article id="lc_11" name="rostok_to_labirint" group="lc" sort="1">
+	<texture>ui_rostok_to_labirint</texture>
+	<text>enc_rostok_to_labirint</text>
+</article>
+
+<article id="lc_12" name="labirint_to_aver" group="lc" sort="1">
+	<texture>ui_labirint_to_aver</texture>
+	<text>enc_labirint_to_aver</text>
+</article>
+
+<article id="lc_13" name="aver_to_labirint" group="lc" sort="1">
+	<texture>ui_aver_to_labirint</texture>
+	<text>enc_aver_to_labirint</text>
+</article>
+
+<article id="lc_14" name="agro_to_marsh" group="lc" sort="1">
+	<texture>ui_agro_to_marsh</texture>
+	<text>enc_agro_to_marsh</text>
+</article>
+
+<article id="lc_15" name="agro_to_yantar" group="lc" sort="1">
+	<texture>ui_agro_to_yantar</texture>
+	<text>enc_agro_to_yantar</text>
+</article>
+
+<article id="lc_16" name="rostok_to_military" group="lc" sort="1">
+	<texture>ui_rostok_to_military</texture>
+	<text>enc_rostok_to_military</text>
+</article>
+
+<article id="lc_17" name="military_to_rostok" group="lc" sort="1">
+	<texture>ui_military_to_rostok</texture>
+	<text>enc_military_to_rostok</text>
+</article>
+
+<article id="lc_18" name="bar_to_atp" group="lc" sort="1">
+	<texture>ui_bar_to_atp</texture>
+	<text>enc_bar_to_atp</text>
+</article>
+
+<article id="lc_19" name="atp_to_bar" group="lc" sort="1">
+	<texture>ui_atp_to_bar</texture>
+	<text>enc_atp_to_bar</text>
+</article>
+
+<article id="lc_20" name="military_to_mine" group="lc" sort="1">
+	<texture>ui_military_to_mine</texture>
+	<text>enc_military_to_mine</text>
+</article>
+
+<article id="lc_21" name="mine_to_military" group="lc" sort="1">
+	<texture>ui_mine_to_military</texture>
+	<text>enc_mine_to_military</text>
+</article>
+
+<article id="lc_22" name="darkvalley_to_mine" group="lc" sort="1">
+	<texture>ui_darkvalley_to_mine</texture>
+	<text>enc_darkvalley_to_mine</text>
+</article>
+
+<article id="lc_23" name="mine_to_darkvalley" group="lc" sort="1">
+	<texture>ui_mine_to_darkvalley</texture>
+	<text>enc_mine_to_darkvalley</text>
+</article>
+
+<article id="lc_24" name="radar_to_x8" group="lc" sort="1">
+	<texture>ui_radar_to_x8</texture>
+	<text>enc_radar_to_x8</text>
+</article>
+
+<article id="lc_25" name="x10_to_sarkofag" group="lc" sort="1">
+	<texture>ui_x10_to_sarkofag</texture>
+	<text>enc_x10_to_sarkofag</text>
+</article>
+
+<article id="lc_26" name="sarkofag_to_x10" group="lc" sort="1">
+	<texture>ui_sarkofag_to_x10</texture>
+	<text>enc_sarkofag_to_x10</text>
+</article>
+
+<article id="lc_27" name="sarkofag_to_stancia2" group="lc" sort="1">
+	<texture>ui_sarkofag_to_stancia2</texture>
+	<text>enc_sarkofag_to_stancia2</text>
+</article>
+
+<article id="lc_28" name="stancia2_to_sarkofag" group="lc" sort="1">
+	<texture>ui_stancia2_to_sarkofag</texture>
+	<text>enc_stancia2_to_sarkofag</text>
+</article>
+
+<article id="lc_29" name="stancia2_to_stancia1" group="lc" sort="1">
+	<texture>ui_stancia2_to_stancia1</texture>
+	<text>enc_stancia2_to_stancia1</text>
+</article>
+
+<article id="lc_30" name="varlab_to_generators" group="lc" sort="1">
+	<texture>ui_varlab_to_generators</texture>
+	<text>enc_varlab_to_generators</text>
+</article>
+
+<article id="lc_31" name="generators_to_varlab" group="lc" sort="1">
+	<texture>ui_generators_to_varlab</texture>
+	<text>enc_generators_to_varlab</text>
+</article>
+
+<article id="lc_32" name="generators_to_pripyat" group="lc" sort="1">
+	<texture>ui_generators_to_pripyat</texture>
+	<text>enc_generators_to_pripyat</text>
+</article>
+
+<article id="lc_33" name="stancia1_to_generators" group="lc" sort="1">
+	<texture>ui_stancia1_to_generators</texture>
+	<text>enc_stancia1_to_generators</text>
+</article>
+
+<article id="lc_34" name="stancia1_to_vpripyat" group="lc" sort="1">
+	<texture>ui_stancia1_to_vpripyat</texture>
+	<text>enc_stancia1_to_vpripyat</text>
+</article>
+
+<article id="lc_35" name="stancia2_to_atp" group="lc" sort="1">
+	<texture>ui_stancia2_to_atp</texture>
+	<text>enc_stancia2_to_atp</text>
+</article>
+
+<article id="lc_36" name="limansk_to_generators" group="lc" sort="1">
+	<texture>ui_limansk_to_generators</texture>
+	<text>enc_limansk_to_generators</text>
+</article>
+
+<article id="lc_37" name="village_to_hospital" group="lc" sort="1">
+	<texture>ui_village_to_hospital</texture>
+	<text>enc_village_to_hospital</text>
+</article>
+
+<article id="lc_38" name="village_to_limansk" group="lc" sort="1">
+	<texture>ui_village_to_limansk</texture>
+	<text>enc_village_to_limansk</text>
+</article>
+
+<article id="lc_39" name="varlab_to_x16" group="lc" sort="1">
+	<texture>ui_varlab_to_x16</texture>
+	<text>enc_varlab_to_x16</text>
+</article>
+
+<article id="lc_40" name="pripyat_to_vpripyat" group="lc" sort="1">
+	<texture>ui_pripyat_to_vpripyat</texture>
+	<text>enc_pripyat_to_vpripyat</text>
+</article>
+
+<article id="lc_41" name="pripyat_to_village" group="lc" sort="1">
+	<texture>ui_pripyat_to_village</texture>
+	<text>enc_pripyat_to_village</text>
+</article>
+
+<article id="lc_42" name="generators_to_hospital" group="lc" sort="1">
+	<texture>ui_generators_to_hospital</texture>
+	<text>enc_generators_to_hospital</text>
+</article>
+
+<article id="lc_43" name="kordon_to_agro" group="lc" sort="1">
+	<texture>ui_kordon_to_agro</texture>
+	<text>enc_kordon_to_agro</text>
+</article>
+
+<article id="lc_44" name="svalka_to_aver" group="lc" sort="1">
+	<texture>ui_svalka_to_aver</texture>
+	<text>enc_svalka_to_aver</text>
+</article>
+
+<article id="lc_45" name="agro_to_kordon" group="lc" sort="1">
+	<texture>ui_agro_to_kordon</texture>
+	<text>enc_agro_to_kordon</text>
+</article>
+
+<article id="lc_46" name="valley_to_aver" group="lc" sort="1">
+	<texture>ui_valley_to_aver</texture>
+	<text>enc_valley_to_aver</text>
+</article>
+
+<article id="lc_47" name="valley_to_les" group="lc" sort="1">
+	<texture>ui_valley_to_les</texture>
+	<text>enc_valley_to_les</text>
+</article>
+
+<article id="lc_48" name="valley_to_radar" group="lc" sort="1">
+	<texture>ui_valley_to_radar</texture>
+	<text>enc_valley_to_radar</text>
+</article>
+
+<article id="lc_49" name="x18_to_varlab" group="lc" sort="1">
+	<texture>ui_x18_to_varlab</texture>
+	<text>enc_x18_to_varlab</text>
+</article>
+
+<article id="lc_50" name="military_to_aver" group="lc" sort="1">
+	<texture>ui_military_to_aver</texture>
+	<text>enc_military_to_aver</text>
+</article>
+
+<article id="lc_51" name="yntar_to_agro" group="lc" sort="1">
+	<texture>ui_yntar_to_agro</texture>
+	<text>enc_yntar_to_agro</text>
+</article>
+
+<article id="lc_52" name="yntar_to_radar" group="lc" sort="1">
+	<texture>ui_yntar_to_radar</texture>
+	<text>enc_yntar_to_radar</text>
+</article>
+
+<article id="lc_53" name="radar_to_redforest" group="lc" sort="1">
+	<texture>ui_radar_to_redforest</texture>
+	<text>enc_radar_to_redforest</text>
+</article>
+
+<article id="lc_54" name="radar_to_varlab" group="lc" sort="1">
+	<texture>ui_radar_to_varlab</texture>
+	<text>enc_radar_to_varlab</text>
+</article>
+
+<article id="lc_55" name="radar_to_yantar" group="lc" sort="1">
+	<texture>ui_radar_to_yantar</texture>
+	<text>enc_radar_to_yantar</text>
+</article>
+
+<article id="lc_56" name="radar_to_valley" group="lc" sort="1">
+	<texture>ui_radar_to_valley</texture>
+	<text>enc_radar_to_valley</text>
+</article>
+
+<article id="lc_57" name="vpripyat_to_pripyat" group="lc" sort="1">
+	<texture>ui_vpripyat_to_pripyat</texture>
+	<text>enc_vpripyat_to_pripyat</text>
+</article>
+
+<article id="lc_58" name="vpripyat_to_stancia1" group="lc" sort="1">
+	<texture>ui_vpripyat_to_stancia1</texture>
+	<text>enc_vpripyat_to_stancia1</text>
+</article>
+
+<article id="lc_59" name="vpripyat_to_puteprovod" group="lc" sort="1">
+	<texture>ui_vpripyat_to_puteprovod</texture>
+	<text>enc_vpripyat_to_puteprovod</text>
+</article>
+
+<article id="lc_60" name="vpripyat_to_upiter" group="lc" sort="1">
+	<texture>ui_vpripyat_to_upiter</texture>
+	<text>enc_vpripyat_to_upiter</text>
+</article>
+
+<article id="lc_61" name="redforest_to_varlab" group="lc" sort="1">
+	<texture>ui_redforest_to_varlab</texture>
+	<text>enc_redforest_to_varlab</text>
+</article>
+
+<article id="lc_62" name="redforest_to_les" group="lc" sort="1">
+	<texture>ui_redforest_to_les</texture>
+	<text>enc_redforest_to_les</text>
+</article>
+</encyclopedia>

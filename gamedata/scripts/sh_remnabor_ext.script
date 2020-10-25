@@ -1,0 +1,171 @@
+-- расширение для "полевого ремонта" от Shadowman
+-- вес ремкомплектов
+
+--[[ в конфигах нужен невидимый предмет на базе оружия
+[weight_control_item]:wpn_pm
+quest_item	= true
+inv_name	= "вес ремкомплектов"
+inv_name_short	= "вес ремкомплектов"
+inv_grid_width	= 0
+inv_grid_height	= 0
+inv_weight	= 0
+cost		= 0
+slot		= 7
+auto_attach	= false
+ammo_elapsed	= 0
+ammo_mag_size	= 32000	; в sh_remnabor_ext.set_weight() вписать такое же ограничение
+ammo_class	= ammo_12x76_dart
+]]
+
+-- подключать через добавление вызова init() и on_take() в удобное место
+-- if item:section() == "weight_control_item" then sh_remnabor_ext.on_take( item ) end
+-- if item:section() == "sh_remnabor" then sh_remnabor_ext.on_take( item ) end
+-- if info == "repair_done" then set_weight( "repair_done" ) end
+-- if получили ремкомплекты then set_weight( "repair_done" ) end
+
+
+function log( ... ) _util.log( "sh_remnabor_ext", ... ) end
+function abort( ... ) _util.abort( "sh_remnabor_ext", ... ) end
+
+local rep_wpn_w = 10	-- вес в обрезовских ammo_12x76_dart
+local rep_out_w = 10	-- итого, сейчас ограничены в 3200 ремкомплектов по полкило весом.
+
+
+local actor = db.actor
+
+local weight_control_item
+
+local t_del = false
+function dummy() end
+
+function del_item( item )
+	if item then
+		if t_del then
+			t_del[item:id()] = item:name()
+			-- log( "info", "del_item, add: %s", item:name() )
+		else
+			t_del = { [item:id()] = item:name() }
+			level.add_call( del_item, dummy )
+			-- log( "info", "del_item, run: %s", item:name() )
+		end
+		return false
+	end
+
+	for k, v in pairs( t_del or {} ) do
+		local obj = alife():object( k )
+		if obj and obj:name() == v then 
+			alife():release( obj, true ) 
+		end
+	end
+	t_del = false
+	-- log( "info", "del_item, done" )
+	return true
+end
+
+
+function set_weight( nfo )
+	if nfo and nfo ~= "repair_done" then 
+		return 
+	end
+	local obj = weight_control_item and alife():object( weight_control_item )
+	local item = obj and level.object_by_id( obj.id )
+	if item then
+		if item:name() == weight_control_item then
+			if not actor:object( "sh_remnabor" ) then
+				-- log( "info", "set_weight, no box, set 0" )
+				item:set_ammo_elapsed(0)
+				return
+			end
+		else
+			return
+		end
+	else return
+	end
+
+	local rep_wpn = amk.load_variable( "repair_item_weapon", 0 )
+	local rep_out = amk.load_variable( "repair_item_outfit", 0 )
+
+	local w = 0
+	if rep_wpn ~= 0 then 
+		w = math.ceil( rep_wpn_w * rep_wpn ) 
+	end
+	-- log( "info", "rep_wpn: %s", w )
+	if rep_out ~= 0 then 
+		w = w + math.ceil( rep_out_w * rep_out ) 
+	end
+	-- log( "info", "rep_wpn + rep_out: %s > %s (%s, %s)", item:get_ammo_in_magazine(), w, rep_wpn, rep_out )
+	if w < 32000 then 
+		item:set_ammo_elapsed( w ) 
+	end
+end
+
+
+function on_take( item )
+	-- log( "info", "on_take, %s", item:name() )
+	if item:section() == "weight_control_item" then
+		if weight_control_item then
+			if item:name() ~= weight_control_item then 
+				del_item( item ) 
+			end
+		else 
+			weight_control_item = item:name()
+		end
+		set_weight()
+	elseif item:section() == "sh_remnabor" then
+		if not weight_control_item then
+			local obj = alife():create( "weight_control_item", vector(), 0, 0, 0 )
+			if obj then
+				weight_control_item = obj:name()
+				-- log( "info", "on_take, sh_remnabor, new item: %s", obj:name() )
+			end	
+		end
+		set_weight()
+	end
+end
+
+
+function on_drop( item )
+	local obj = alife():object( item:id() )
+	if obj then	-- выложили, а не использовали
+		local item = db.actor:object( "weight_control_item" )
+		if item and not db.actor:object( "sh_remnabor" ) then 
+			item:set_ammo_elapsed( 0 ) 
+		end
+	end	-- end
+end
+
+--[[function first_start()
+	local item = actor:object( "weight_control_item" )
+	if item then
+		item:set_ammo_elapsed( 0 )
+	end
+end]]
+
+function init()
+	local item = actor:object( "weight_control_item" )
+	if item then
+		-- log( "info", "init, item exist: %s", item:name() )
+		weight_control_item = item:name()
+	else
+		local obj = alife():create( "weight_control_item", vector(), 0, 0, 0 )
+		if obj then
+			weight_control_item = obj:name()
+			-- amk.oAmkLauncher:AddFunc( "RWeightFirstTime", "sh_remnabor_ext.first_start()" )
+			log( "info", "init, new item: %s", obj:name() )
+		end
+	end
+
+	-- if bind_stalker.add_on_take then
+	--	bind_stalker.add_on_take( on_take, "weight_control_item" )
+	--	bind_stalker.add_on_take( on_take, "sh_remnabor" )
+	--	bind_stalker.add_on_info( set_weight, "repair_done" )
+	-- end
+
+	-- local w_parrot = sys_ini:r_float( "ammo_12x76_dart", "inv_weight" ) / sys_ini:r_float( "ammo_12x76_dart", "box_size" )
+	-- log( "info", "init, parrot: %s, riw: %s (%s), ria: %s (%s)", w_parrot,
+	--	rep_wpn_w * w_parrot, rep_wpn_w, rep_out_w * w_parrot, rep_out_w )
+
+	return true
+end
+
+log( "module", ok )

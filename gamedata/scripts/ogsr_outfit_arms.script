@@ -1,0 +1,783 @@
+-- Based on jr_outfit_arms.script by Lordmuzer
+
+
+local outfit_sects = {
+	['bandit_gaz_outfit_m1']               = "bandit_jacket_black",
+	['bandit_outfit']                      = "bandit_jacket_black",
+	['outfit_bandit_m1']                   = "bandit_jacket_black",
+	['bandit_outfit_blue']                 = "bandit_jacket_blue",
+	['bandit_outfit_red']                  = "bandit_jacket_red",
+	['bandit_outfit_red1']                 = "bandit_jacket_red",
+
+	['bandit_master_outfit']               = "bandit_cloak_black",
+	['bandit_master_outfit_m1']            = "bandit_cloak_black",
+
+	['bandit_veteran_outfit']              = "bandit_cloak_brown",
+	['bandit_veteran_outfit_m1']           = "bandit_cloak_brown",
+
+	['exo_bandit_outfit']                  = "bandit_exo",
+	['exo_bandit_outfit_bad']              = "bandit_exo",
+	['exo_bandit_outfit_badplus']          = "bandit_exo",
+	['exo_bandit_outfit_bast']             = "bandit_exo",
+	['exo_bandit_outfit_bastplus']         = "bandit_exo",
+	['exo_bandit_outfit_good']             = "bandit_exo",
+	['exo_bandit_outfit_goodplus']         = "bandit_exo",
+	['exo_bandit_outfit_plus']             = "bandit_exo",
+
+------------------------------------------------------------------------------------
+
+	['dolg_outfit']                        = "dolg",
+	['dolg_outfit_plus']                   = "dolg",
+	['dolg_gaz_outfit_m1']                 = "dolg",
+	['dolg_gaz_outfit_m1_plus']            = "dolg",
+	['outfit_dolg_m1']                     = "dolg",
+	['outfit_dolg_m1_plus']                = "dolg",
+
+	['dolg_scientific_outfit']             = "dolg_sci",
+	['dolg_scientific_outfit_bast']        = "dolg_sci",
+	['dolg_scientific_outfit_bastplus']    = "dolg_sci",
+	['dolg_scientific_outfit_good']        = "dolg_sci",
+	['dolg_scientific_outfit_goodplus']    = "dolg_sci",
+	['dolg_scientific_outfit_plus']        = "dolg_sci",
+
+	['dolg_black_exoskeleton']             = "dolg_exo",
+	['dolg_black_exoskeleton_bad']         = "dolg_exo",
+	['dolg_black_exoskeleton_badplus']     = "dolg_exo",
+	['dolg_black_exoskeleton_bast']        = "dolg_exo",
+	['dolg_black_exoskeleton_bastplus']    = "dolg_exo",
+	['dolg_black_exoskeleton_good']        = "dolg_exo",
+	['dolg_black_exoskeleton_goodplus']    = "dolg_exo",
+	['dolg_black_exoskeleton_plus']        = "dolg_exo",
+
+------------------------------------------------------------------------------------
+
+	['ecolog_outfit']                      = "ecolog_orange",
+	['ecolog_outfit_bast']                 = "ecolog_orange",
+	['ecolog_outfit_bastplus']             = "ecolog_orange",
+	['ecolog_outfit_good']                 = "ecolog_orange",
+	['ecolog_outfit_goodplus']             = "ecolog_orange",
+	['ecolog_outfit_plus']                 = "ecolog_orange",
+
+--Зеленый костюм эколога
+	['protection_outfit']                  = "ecolog_green",
+	['protection_outfit_bast']             = "ecolog_green",
+	['protection_outfit_bastplus']         = "ecolog_green",
+	['protection_outfit_plus']             = "ecolog_green",
+
+--Белый костюм учёного монолитовца
+	['scientist_suit_white']               = "ecolog_white",
+	['scientist_suit_white_trade']         = "ecolog_white",
+
+--Жёлтый костюм пожарного
+	['fire_outfit']                        = "ecolog_yellow",
+
+------------------------------------------------------------------------------------
+
+	['killer_outfit']                      = "killer",
+	['killer_outfit_plus']                 = "killer",
+	['outfit_killer_m1']                   = "killer",
+	['outfit_killer_m1_plus']              = "killer",
+
+	['killer_gaz_outfit_m1']               = "killer",
+	['killer_gaz_outfit_m1_plus']          = "killer",
+
+	['merc_scientific_outfit']             = "killer_sci",
+	['merc_scientific_outfit_bast']        = "killer_sci",
+	['merc_scientific_outfit_bastplus']    = "killer_sci",
+	['merc_scientific_outfit_good']        = "killer_sci",
+	['merc_scientific_outfit_goodplus']    = "killer_sci",
+	['merc_scientific_outfit_plus']        = "killer_sci",
+
+	['killer_blue_exoskeleton']            = "killer_exo",
+	['killer_blue_exoskeleton_bad']        = "killer_exo",
+	['killer_blue_exoskeleton_badplus']    = "killer_exo",
+	['killer_blue_exoskeleton_bast']       = "killer_exo",
+	['killer_blue_exoskeleton_bastplus']   = "killer_exo",
+	['killer_blue_exoskeleton_good']       = "killer_exo",
+	['killer_blue_exoskeleton_goodplus']   = "killer_exo",
+	['killer_blue_exoskeleton_plus']       = "killer_exo",
+
+------------------------------------------------------------------------------------
+
+--Бронежилет
+	['outfit_soldier_m1']                  = "military",
+	['outfit_soldier_m1_plus']             = "military",
+
+--Берилл
+	['specops_outfit']                     = "military_berill",
+	['specops_outfit_bast']                = "military_berill",
+	['specops_outfit_bastplus']            = "military_berill",
+	['specops_outfit_good']                = "military_berill",
+	['specops_outfit_goodplus']            = "military_berill",
+	['specops_outfit_plus']                = "military_berill",
+
+--Лечебный Берилл
+	['outfit_specnaz_m1']                  = "military_berill",
+	['outfit_specnaz_m1_bast']             = "military_berill",
+	['outfit_specnaz_m1_bastplus']         = "military_berill",
+	['outfit_specnaz_m1_good']             = "military_berill",
+	['outfit_specnaz_m1_goodplus']         = "military_berill",
+	['outfit_specnaz_m1_plus']             = "military_berill",
+
+--Гравикостюм
+	['soldier_outfit']                     = "military_gravi",
+	['soldier_outfit_plus']                = "military_gravi",
+	['soldier_outfit_bad']                 = "military_gravi",
+	['soldier_outfit_badplus']             = "military_gravi",
+	['soldier_outfit_bast']                = "military_gravi",
+	['soldier_outfit_bastplus']            = "military_gravi",
+	['soldier_outfit_good']                = "military_gravi",
+	['soldier_outfit_goodplus']            = "military_gravi",
+
+--СКАТ9
+	['military_outfit']                    = "military_skat9",
+	['military_outfit_bast']               = "military_skat9",
+	['military_outfit_bastplus']           = "military_skat9",
+	['military_outfit_good']               = "military_skat9",
+	['military_outfit_goodplus']           = "military_skat9",
+	['military_outfit_plus']               = "military_skat9",
+
+--СКАТ10
+	['militaryspec_outfit']                = "military_skat10",
+	['militaryspec_outfit_bast']           = "military_skat10",
+	['militaryspec_outfit_bastplus']       = "military_skat10",
+	['militaryspec_outfit_plus']           = "military_skat10",
+
+--УНИКАЛЬНЫЙ СКАТ15
+	['exo_mil_exoskeleton']                = "military_skat15_exo",
+	['exo_mil_exoskeleton_add']            = "military_skat15_exo",
+	['exo_mil_exoskeleton_addr']           = "military_skat15_exo",
+	['exo_mil_exoskeleton_addrs']          = "military_skat15_exo",
+
+------------------------------------------------------------------------------------
+
+	['nebo_light_outfit']                  = "nebo",
+	['nebo_heavy_outfit']                  = "nebo2",
+
+	['nebo_scientific_outfit']             = "nebo_sci",
+	['nebo_scientific_outfit_bast']        = "nebo_sci",
+
+	['nebo_exo_outfit']                    = "nebo_exo",
+	['nebo_exo_outfit_bast']               = "nebo_exo",
+	['nebo_exo_outfit_blackwhite']         = "nebo_exo",
+	['nebo_exo_outfit_good']               = "nebo_exo",
+
+------------------------------------------------------------------------------------
+
+	['svoboda_light_outfit']               = "svoboda",
+	['svoboda_light_outfit_plus']          = "svoboda",
+	['svoboda_gaz_outfit_m1']              = "svoboda",
+	['svoboda_gaz_outfit_m1_plus']         = "svoboda",
+	['outfit_svoboda_m1']                  = "svoboda",
+	['outfit_svoboda_m1_plus']             = "svoboda",
+
+	['svoboda_heavy_outfit']               = "svoboda_heavy",
+	['svoboda_heavy_outfit_plus']          = "svoboda_heavy",
+	['svoboda_heavy_gaz_outfit_m1']        = "svoboda_heavy",
+	['svoboda_heavy_gaz_outfit_m1_plus']   = "svoboda_heavy",
+
+	['freedom_scientific_outfit']          = "svoboda_sci",
+	['freedom_scientific_outfit_bast']     = "svoboda_sci",
+	['freedom_scientific_outfit_bastplus'] = "svoboda_sci",
+	['freedom_scientific_outfit_good']     = "svoboda_sci",
+	['freedom_scientific_outfit_goodplus'] = "svoboda_sci",
+	['freedom_scientific_outfit_plus']     = "svoboda_sci",
+
+	['svoboda_exoskeleton']                = "svoboda_exo",
+	['svoboda_exoskeleton_bad']            = "svoboda_exo",
+	['svoboda_exoskeleton_badplus']        = "svoboda_exo",
+	['svoboda_exoskeleton_bast']           = "svoboda_exo",
+	['svoboda_exoskeleton_bastplus']       = "svoboda_exo",
+	['svoboda_exoskeleton_good']           = "svoboda_exo",
+	['svoboda_exoskeleton_goodplus']       = "svoboda_exo",
+	['svoboda_exoskeleton_plus']           = "svoboda_exo",
+
+------------------------------------------------------------------------------------
+
+	['monolit_outfit']                     = "monolit",
+	['monolit_outfit_plus']                = "monolit",
+	['monolit_gaz_outfit_m1']              = "monolit",
+	['monolit_gaz_outfit_m1_plus']         = "monolit",
+
+--Черный костюм монолита
+	['monolit_black_outfit']               = "monolit_black",
+	['monolit_black_outfit_plus']          = "monolit_black",
+
+	['monolit_scientific_outfit']          = "monolit_sci",
+	['monolit_scientific_outfit_bast']     = "monolit_sci",
+	['monolit_scientific_outfit_bastplus'] = "monolit_sci",
+	['monolit_scientific_outfit_plus']     = "monolit_sci",
+
+	['monolit_exoskeleton']                = "monolit_exo",
+	['monolit_exoskeleton_bad']            = "monolit_exo",
+	['monolit_exoskeleton_badplus']        = "monolit_exo",
+	['monolit_exoskeleton_bast']           = "monolit_exo",
+	['monolit_exoskeleton_bastplus']       = "monolit_exo",
+	['monolit_exoskeleton_good']           = "monolit_exo",
+	['monolit_exoskeleton_goodplus']       = "monolit_exo",
+	['monolit_exoskeleton_plus']           = "monolit_exo",
+
+------------------------------------------------------------------------------------
+
+--Куртки
+	['neytral_novice_gaz_outfit_m1']       = "stalker_novice_green",
+	['neytral_novice_outfit_cam']          = "stalker_novice_green",
+	['neytral_novice_outfit_cam_1']        = "stalker_novice_green2",
+	['neytral_novice_outfit_cam_2']        = "stalker_novice_green",
+	['neytral_novice_outfit_cam_3']        = "stalker_novice_yellow",
+	['neytral_novice_outfit_m1']           = "stalker_novice_white",
+	['neytral_novice_outfit_new']          = "stalker_novice_green",
+	['novice_outfit']                      = "stalker_novice",
+	['novice_outfit_new_1']                = "bandit_cloak_brown",
+	['novice_outfit_new_2']                = "bandit_cloak_brown",
+	['novice_outfit_rain_1']               = "bandit_cloak_brown",
+	['novice_outfit_rain_2']               = "bandit_cloak_brown",
+	['outfit_novice_m1']                   = "stalker_novice",
+
+--Простые комбезы сталкеров
+	['stalker_outfit']                     = "neytral2",
+	['stalker_outfit_plus']                = "neytral2",
+--Призрак
+	['outfit_stalker_m1']                  = "neytral2",
+	['outfit_stalker_m1_plus']             = "neytral2",
+--Турист
+	['outfit_stalker_m2']                  = "neytral2",
+	['outfit_stalker_m2_plus']             = "neytral2",
+--Стрелок
+	['stalker_outfit_m3']                  = "neytral2",
+	['stalker_outfit_m3_plus']             = "neytral2",
+
+--Комбез Ветеран 1,2,3 (зеленый)
+	['stalker_outfit_v1']                  = "neytral",
+	['stalker_outfit_v1_plus']             = "neytral",
+	['stalker_outfit_v2']                  = "neytral",
+	['stalker_outfit_v2_plus']             = "neytral",
+	['stalker_outfit_v3']                  = "neytral",
+	['stalker_outfit_v3_plus']             = "neytral",
+	['neytral_gaz_outfit_v1']              = "neytral",
+	['neytral_gaz_outfit_v1_plus']         = "neytral",
+	['neytral_gaz_outfit_v2']              = "neytral",
+	['neytral_gaz_outfit_v2_plus']         = "neytral",
+	['neytral_gaz_outfit_v3']              = "neytral",
+	['neytral_gaz_outfit_v3_plus']         = "neytral",
+
+--КСУ1 (синий)
+	['neytral_gaz_outfit_m1']              = "neytral_blue",
+	['neytral_gaz_outfit_m1_plus']         = "neytral_blue",
+	['neytral_gaz_outfit_m2']              = "neytral_blue",
+	['neytral_gaz_outfit_m2_plus']         = "neytral_blue",
+
+--Сева
+	['scientific_outfit']                  = "seva",
+	['scientific_outfit_bast']             = "seva",
+	['scientific_outfit_bastplus']         = "seva",
+	['scientific_outfit_good']             = "seva",
+	['scientific_outfit_goodplus']         = "seva",
+	['scientific_outfit_plus']             = "seva",
+
+	['exo_outfit']                         = "neytral_exo",
+	['exo_outfit_bad']                     = "neytral_exo",
+	['exo_outfit_badplus']                 = "neytral_exo",
+	['exo_outfit_bast']                    = "neytral_exo",
+	['exo_outfit_bastplus']                = "neytral_exo",
+	['exo_outfit_good']                    = "neytral_exo",
+	['exo_outfit_goodplus']                = "neytral_exo",
+	['exo_outfit_plus']                    = "neytral_exo",
+
+--Прототип экзоскелета (Он вообще задействован?)
+	['neytral_exo_antigas_outfit']         = "neytral_exo",
+	['neytral_exo_antigas_outfit_bad']     = "neytral_exo",
+	['neytral_exo_antigas_outfit_badplus'] = "neytral_exo",
+	['neytral_exo_antigas_outfit_bast']    = "neytral_exo",
+	['neytral_exo_antigas_outfit_bastplus']= "neytral_exo",
+	['neytral_exo_antigas_outfit_good']    = "neytral_exo",
+	['neytral_exo_antigas_outfit_goodplus']= "neytral_exo",
+	['neytral_exo_antigas_outfit_plus']    = "neytral_exo",
+  
+--Экзоскелет МК1 (Он вообще задействован?)
+	['neytral_exo_gaz_outfit_m1']          = "neytral_exo",
+	['neytral_exo_gaz_outfit_m1_bad']      = "neytral_exo",
+	['neytral_exo_gaz_outfit_m1_badplus']  = "neytral_exo",
+	['neytral_exo_gaz_outfit_m1_bast']     = "neytral_exo",
+	['neytral_exo_gaz_outfit_m1_bastplus'] = "neytral_exo",
+	['neytral_exo_gaz_outfit_m1_good']     = "neytral_exo",
+	['neytral_exo_gaz_outfit_m1_goodplus'] = "neytral_exo",
+	['neytral_exo_gaz_outfit_m1_plus']     = "neytral_exo",
+
+--Легкий комбинезон сталкера (синий, у охраны)
+	['stalker_guard_outfit']               = "stalker_outfit_lightweight",
+	['stalker_guard_outfit_plus']          = "stalker_outfit_lightweight",
+
+------------------------------------------------------------------------------------
+
+--Тирекс!
+	['strelok_outfit']                     = "tireks",
+
+--Плащ психиатра, белый.
+	['psih_outfit']                        = "cloak_white",
+
+--Поврежденный экзоскелет
+	['broken_exoskeleton']                 = "neytral_exo",
+
+--Модифицированный экзоскелет
+	['outfit_exo_m1']                      = "neytral_exo",
+	['outfit_exo_m1_bad']                  = "neytral_exo",
+	['outfit_exo_m1_badplus']              = "neytral_exo",
+	['outfit_exo_m1_bast']                 = "neytral_exo",
+	['outfit_exo_m1_bastplus']             = "neytral_exo",
+	['outfit_exo_m1_good']                 = "neytral_exo",
+	['outfit_exo_m1_goodplus']             = "neytral_exo",
+	['outfit_exo_m1_plus']                 = "neytral_exo",
+
+-- 'meceniy_outfit_new' --Маскировочная экза, одев её вообще нельзя брать в руки что либо, поэтому и текстуры не нужны.
+
+}
+
+local arm_config = {
+	--Вот эти стандартные текстуры используемые на стволах будут подменяться.
+	["textures_to_replace"] = {
+		"act\\act_arm_perchatka_cs",
+		"act\\act_arm_perchatka_cs_bump",
+		"act\\act_arm_css",
+		"act\\act_arm_css_bump",
+	},
+
+	-- special arm set when no outfit in slot
+	["no_outfit"] = {
+		"act\\gloves\\sviter\\act_arm_perchatka_cs",
+		"act\\gloves\\sviter\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_black\\act_arm_css",
+		"act\\hands\\default_black\\act_arm_css_bump",
+	},
+
+------------------------------------------------------------
+	["bandit_jacket_black"] = {
+		"act\\gloves\\bandit_jacket_black\\act_arm_perchatka_cs",
+		"act\\gloves\\bandit_jacket_black\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_black\\act_arm_css",
+		"act\\hands\\default_black\\act_arm_css_bump",
+	},
+
+	["bandit_jacket_blue"] = {
+		"act\\gloves\\bandit_jacket_blue\\act_arm_perchatka_cs",
+		"act\\gloves\\bandit_jacket_blue\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_black\\act_arm_css",
+		"act\\hands\\default_black\\act_arm_css_bump",
+	},
+
+	["bandit_jacket_red"] = {
+		"act\\gloves\\bandit_jacket_red\\act_arm_perchatka_cs",
+		"act\\gloves\\bandit_jacket_red\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_black\\act_arm_css",
+		"act\\hands\\default_black\\act_arm_css_bump",
+	},
+
+	["bandit_cloak_brown"] = {
+		"act\\gloves\\bandit_cloak_brown\\act_arm_perchatka_cs",
+		"act\\gloves\\bandit_cloak_brown\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_black\\act_arm_css",
+		"act\\hands\\default_black\\act_arm_css_bump",
+	},
+
+	["bandit_cloak_black"] = {
+		"act\\gloves\\bandit_cloak_black\\act_arm_perchatka_cs",
+		"act\\gloves\\bandit_cloak_black\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_black\\act_arm_css",
+		"act\\hands\\default_black\\act_arm_css_bump",
+	},
+
+	["bandit_exo"] = {
+		"act\\gloves\\bandit_exo\\act_arm_perchatka_cs",
+		"act\\gloves\\bandit_exo\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_exo\\act_arm_css",
+		"act\\hands\\default_exo\\act_arm_css_bump",
+	},
+
+------------------------------------------------------------
+	["dolg"] = {
+		"act\\gloves\\dolg\\act_arm_perchatka_cs",
+		"act\\gloves\\dolg\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_black\\act_arm_css",
+		"act\\hands\\default_black\\act_arm_css_bump",
+	},
+
+	["dolg_sci"] = {
+		"act\\gloves\\dolg_sci\\act_arm_perchatka_cs",
+		"act\\gloves\\dolg_sci\\act_arm_perchatka_cs_bump",
+		"act\\hands\\dolg_exo\\act_arm_css",
+		"act\\hands\\dolg_exo\\act_arm_css_bump",
+	},
+
+	["dolg_exo"] = {
+		"act\\gloves\\dolg_exo\\act_arm_perchatka_cs",
+		"act\\gloves\\dolg_exo\\act_arm_perchatka_cs_bump",
+		"act\\hands\\dolg_exo\\act_arm_css",
+		"act\\hands\\dolg_exo\\act_arm_css_bump",
+	},
+
+------------------------------------------------------------
+	["ecolog_orange"] = {
+		"act\\gloves\\ecolog_orange\\act_arm_perchatka_cs",
+		"act\\gloves\\ecolog_orange\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_exo\\act_arm_css",
+		"act\\hands\\default_exo\\act_arm_css_bump",
+	},
+
+	["ecolog_green"] = {
+		"act\\gloves\\ecolog_green\\act_arm_perchatka_cs",
+		"act\\gloves\\ecolog_green\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_exo\\act_arm_css",
+		"act\\hands\\default_exo\\act_arm_css_bump",
+	},
+
+	["ecolog_white"] = {
+		"act\\gloves\\ecolog_white\\act_arm_perchatka_cs",
+		"act\\gloves\\ecolog_white\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_exo\\act_arm_css",
+		"act\\hands\\default_exo\\act_arm_css_bump",
+	},
+
+	["ecolog_yellow"] = {
+		"act\\gloves\\ecolog_yellow\\act_arm_perchatka_cs",
+		"act\\gloves\\ecolog_yellow\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_exo\\act_arm_css",
+		"act\\hands\\default_exo\\act_arm_css_bump",
+	},
+
+------------------------------------------------------------
+	["killer"] = {
+		"act\\gloves\\killer\\act_arm_perchatka_cs",
+		"act\\gloves\\killer\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_black\\act_arm_css",
+		"act\\hands\\default_black\\act_arm_css_bump",
+	},
+
+	["killer_sci"] = {
+		"act\\gloves\\killer_sci\\act_arm_perchatka_cs",
+		"act\\gloves\\killer_sci\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_exo\\act_arm_css",
+		"act\\hands\\default_exo\\act_arm_css_bump",
+	},
+
+	["killer_exo"] = {
+		"act\\gloves\\killer_exo\\act_arm_perchatka_cs",
+		"act\\gloves\\killer_exo\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_exo\\act_arm_css",
+		"act\\hands\\default_exo\\act_arm_css_bump",
+	},
+
+------------------------------------------------------------
+	["military"] = {
+		"act\\gloves\\military\\act_arm_perchatka_cs",
+		"act\\gloves\\military\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_black\\act_arm_css",
+		"act\\hands\\default_black\\act_arm_css_bump",
+	},
+
+	["military_gravi"] = {
+		"act\\gloves\\military_gravi\\act_arm_perchatka_cs",
+		"act\\gloves\\military_gravi\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_black\\act_arm_css",
+		"act\\hands\\default_black\\act_arm_css_bump",
+	},
+
+	["military_berill"] = {
+		"act\\gloves\\military_berill\\act_arm_perchatka_cs",
+		"act\\gloves\\military_berill\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_exo\\act_arm_css",
+		"act\\hands\\default_exo\\act_arm_css_bump",
+	},
+
+	["military_skat9"] = {
+		"act\\gloves\\military_skat9\\act_arm_perchatka_cs",
+		"act\\gloves\\military_skat9\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_exo\\act_arm_css",
+		"act\\hands\\default_exo\\act_arm_css_bump",
+	},
+
+	["military_skat10"] = {
+		"act\\gloves\\military_skat10\\act_arm_perchatka_cs",
+		"act\\gloves\\military_skat10\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_exo\\act_arm_css",
+		"act\\hands\\default_exo\\act_arm_css_bump",
+	},
+
+	["military_skat15_exo"] = {
+		"act\\gloves\\military_skat15_exo\\act_arm_perchatka_cs",
+		"act\\gloves\\military_skat15_exo\\act_arm_perchatka_cs_bump",
+		"act\\hands\\military_skat15_exo\\act_arm_css",
+		"act\\hands\\military_skat15_exo\\act_arm_css_bump",
+	},
+
+------------------------------------------------------------
+	["nebo"] = {
+		"act\\gloves\\nebo\\act_arm_perchatka_cs",
+		"act\\gloves\\nebo\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_black\\act_arm_css",
+		"act\\hands\\default_black\\act_arm_css_bump",
+	},
+
+	["nebo2"] = {
+		"act\\gloves\\nebo2\\act_arm_perchatka_cs",
+		"act\\gloves\\nebo2\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_black\\act_arm_css",
+		"act\\hands\\default_black\\act_arm_css_bump",
+	},
+
+	["nebo_sci"] = {
+		"act\\gloves\\nebo_sci\\act_arm_perchatka_cs",
+		"act\\gloves\\nebo_sci\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_exo\\act_arm_css",
+		"act\\hands\\default_exo\\act_arm_css_bump",
+	},
+
+	["nebo_exo"] = {
+		"act\\gloves\\nebo_exo\\act_arm_perchatka_cs",
+		"act\\gloves\\nebo_exo\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_exo\\act_arm_css",
+		"act\\hands\\default_exo\\act_arm_css_bump",
+	},
+
+------------------------------------------------------------
+	["svoboda"] = {
+		"act\\gloves\\svoboda\\act_arm_perchatka_cs",
+		"act\\gloves\\svoboda\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_black\\act_arm_css",
+		"act\\hands\\default_black\\act_arm_css_bump",
+	},
+
+	["svoboda_heavy"] = {
+		"act\\gloves\\svoboda\\act_arm_perchatka_cs",
+		"act\\gloves\\svoboda\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_exo\\act_arm_css",
+		"act\\hands\\default_exo\\act_arm_css_bump",
+	},
+
+	["svoboda_sci"] = {
+		"act\\gloves\\svoboda_sci\\act_arm_perchatka_cs",
+		"act\\gloves\\svoboda_sci\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_exo\\act_arm_css",
+		"act\\hands\\default_exo\\act_arm_css_bump",
+	},
+
+	["svoboda_exo"] = {
+		"act\\gloves\\svoboda_exo\\act_arm_perchatka_cs",
+		"act\\gloves\\svoboda_exo\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_exo\\act_arm_css",
+		"act\\hands\\default_exo\\act_arm_css_bump",
+	},
+
+------------------------------------------------------------
+	["monolit"] = {
+		"act\\gloves\\monolit\\act_arm_perchatka_cs",
+		"act\\gloves\\monolit\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_black\\act_arm_css",
+		"act\\hands\\default_black\\act_arm_css_bump",
+	},
+
+	["monolit_black"] = {
+		"act\\gloves\\monolit_black\\act_arm_perchatka_cs",
+		"act\\gloves\\monolit_black\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_black\\act_arm_css",
+		"act\\hands\\default_black\\act_arm_css_bump",
+	},
+
+	["monolit_sci"] = {
+		"act\\gloves\\monolit_sci\\act_arm_perchatka_cs",
+		"act\\gloves\\monolit_sci\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_exo\\act_arm_css",
+		"act\\hands\\default_exo\\act_arm_css_bump",
+	},
+
+	["monolit_exo"] = {
+		"act\\gloves\\monolit_exo\\act_arm_perchatka_cs",
+		"act\\gloves\\monolit_exo\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_exo\\act_arm_css",
+		"act\\hands\\default_exo\\act_arm_css_bump",
+	},
+
+------------------------------------------------------------
+
+	["stalker_novice"] = {
+		"act\\gloves\\stalker_novice\\act_arm_perchatka_cs",
+		"act\\gloves\\stalker_novice\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_black\\act_arm_css",
+		"act\\hands\\default_black\\act_arm_css_bump",
+	},
+
+	["stalker_novice_green"] = {
+		"act\\gloves\\stalker_novice_green\\act_arm_perchatka_cs",
+		"act\\gloves\\stalker_novice_green\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_black\\act_arm_css",
+		"act\\hands\\default_black\\act_arm_css_bump",
+	},
+
+	["stalker_novice_green2"] = {
+		"act\\gloves\\stalker_novice_green2\\act_arm_perchatka_cs",
+		"act\\gloves\\stalker_novice_green2\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_black\\act_arm_css",
+		"act\\hands\\default_black\\act_arm_css_bump",
+	},
+
+	["stalker_novice_yellow"] = {
+		"act\\gloves\\stalker_novice_yellow\\act_arm_perchatka_cs",
+		"act\\gloves\\stalker_novice_yellow\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_black\\act_arm_css",
+		"act\\hands\\default_black\\act_arm_css_bump",
+	},
+	
+	["stalker_novice_white"] = {
+		"act\\gloves\\stalker_novice_white\\act_arm_perchatka_cs",
+		"act\\gloves\\stalker_novice_white\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_black\\act_arm_css",
+		"act\\hands\\default_black\\act_arm_css_bump",
+	},
+
+------------------------------------------------------------
+
+	["neytral"] = {
+		"act\\gloves\\neytral\\act_arm_perchatka_cs",
+		"act\\gloves\\neytral\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_black\\act_arm_css",
+		"act\\hands\\default_black\\act_arm_css_bump",
+	},
+
+	["neytral2"] = {
+		"act\\gloves\\neytral2\\act_arm_perchatka_cs",
+		"act\\gloves\\neytral2\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_black\\act_arm_css",
+		"act\\hands\\default_black\\act_arm_css_bump",
+	},
+
+	["neytral_blue"] = {
+		"act\\gloves\\neytral_blue\\act_arm_perchatka_cs",
+		"act\\gloves\\neytral_blue\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_black\\act_arm_css",
+		"act\\hands\\default_black\\act_arm_css_bump",
+	},
+
+	["seva"] = {
+		"act\\gloves\\neytral_seva\\act_arm_perchatka_cs",
+		"act\\gloves\\neytral_seva\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_exo\\act_arm_css",
+		"act\\hands\\default_exo\\act_arm_css_bump",
+	},
+
+	["neytral_exo"] = {
+		"act\\gloves\\neytral_exo\\act_arm_perchatka_cs",
+		"act\\gloves\\neytral_exo\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_exo\\act_arm_css",
+		"act\\hands\\default_exo\\act_arm_css_bump",
+	},
+
+	["tireks"] = {
+		"act\\gloves\\tireks\\act_arm_perchatka_cs",
+		"act\\gloves\\tireks\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_black\\act_arm_css",
+		"act\\hands\\default_black\\act_arm_css_bump",
+	},
+
+	["stalker_outfit_lightweight"] = {
+		"act\\gloves\\stalker_outfit_lightweight\\act_arm_perchatka_cs",
+		"act\\gloves\\stalker_outfit_lightweight\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_black\\act_arm_css",
+		"act\\hands\\default_black\\act_arm_css_bump",
+	},
+	
+------------------------------------------------------------
+
+	["cloak_white"] = {
+		"act\\gloves\\cloak_white\\act_arm_perchatka_cs",
+		"act\\gloves\\cloak_white\\act_arm_perchatka_cs_bump",
+		"act\\hands\\default_black\\act_arm_css",
+		"act\\hands\\default_black\\act_arm_css_bump",
+	},
+
+}
+
+local texture_normal, texture_bump, texture_bump_fix = false, false, false
+local texture_normal_css, texture_bump_css, texture_bump_fix_css = false, false, false
+
+local function init()
+	local def_set = arm_config[ "textures_to_replace" ]
+
+	local textures = texture_find(def_set[1] .. "*")
+
+	for name, tex in pairs(textures) do
+		if string.find(name, "_bump#") then
+			texture_bump_fix = tex
+		elseif string.find(name, "_bump") then
+			texture_bump = tex
+		else
+			texture_normal = tex
+		end
+	end
+
+	--ASSERT(texture_normal, "Texture [%s] not found", def_set[1]) --такое может быть если на момент вызова в онлайне нет ни одного ствола с нужными текстурами рук.
+	ASSERT(not texture_normal or texture_bump, "bump for texture [%s] not found", def_set[1])
+	ASSERT(not texture_normal or texture_bump_fix, "bump# for texture [%s] not found", def_set[1])
+----------------------------------------------------------------
+	local textures_css = texture_find(def_set[3] .. "*")
+
+	for name, tex in pairs(textures_css) do
+		if string.find(name, "_bump#") then
+			texture_bump_fix_css = tex
+		elseif string.find(name, "_bump") then
+			texture_bump_css = tex
+		else
+			texture_normal_css = tex
+		end
+	end
+
+	--ASSERT(texture_normal_css, "Texture [%s] not found", def_set[3]) --такое может быть если на момент вызова в онлайне нет ни одного ствола с нужными текстурами рук.
+	ASSERT(not texture_normal_css or texture_bump_css, "bump for texture [%s] not found", def_set[3])
+	ASSERT(not texture_normal_css or texture_bump_fix_css, "bump# for texture [%s] not found", def_set[3])
+end
+
+local last_config = false
+local function apply_arm_set(new_config)
+	if not texture_normal or not texture_normal_css then init() end
+	if not texture_normal or not texture_normal_css then return end
+
+	if new_config ~= last_config then
+		last_config = new_config
+
+		local new_set = arm_config[ new_config ]
+		ASSERT(new_set, "unknown arm_config: [%s]", new_config)
+
+		texture_normal:load(new_set[1])
+		texture_bump:load(new_set[2])
+		texture_bump_fix:load(new_set[2] .. "#")
+
+		texture_normal_css:load(new_set[3])
+		texture_bump_css:load(new_set[4])
+		texture_bump_fix_css:load(new_set[4] .. "#")
+    end
+end
+
+
+function on_first_update()
+	local outfit = db.actor:item_in_slot(6)
+	if not outfit then
+		apply_arm_set("no_outfit")
+	end
+end
+
+function on_item_to_slot(obj)
+	local outfit = db.actor:item_in_slot(6)
+	if outfit then
+		local arm_set = outfit_sects[outfit:section()] --По уму конечно надо читать из конфигов, а не из таблицы. Но конфиги мне править лень.
+		if arm_set then
+			apply_arm_set(arm_set)
+		end
+	end
+end
+
+function check_drop(obj)
+	if not obj:is_outfit() then return end
+
+	local outfit = db.actor:item_in_slot(6)
+	if not outfit then
+		apply_arm_set("no_outfit")
+	end
+end

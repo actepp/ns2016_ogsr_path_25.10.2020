@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+
+<string id="General">
+	<text>Общие сведения</text>
+</string>
+<string id="lc">
+	<text>Обнаруженные переходы</text>
+</string>
+
+
+<string id="esc_to_garbage">
+	<text>Кордон - Свалка</text>
+</string>
+<string id="enc_esc_to_garbage">
+	<text>Сидорович подсказал, как выйти с Кордона на Свалку. Переход начинается на северном, заброшенном блокпосту.</text>
+</string>
+
+<string id="esc_to_marsh">
+	<text>Кордон - Болота</text>
+</string>
+<string id="enc_esc_to_marsh">
+	<text>Сидорович рассказал, как пройти на Болота. Неподалёку от его бункера есть тропинка.</text>
+</string>
+
+<string id="esc_to_darkscape">
+	<text>Кордон - Лощина</text>
+</string>
+<string id="enc_esc_to_darkscape">
+	<text>Дорога с Кордона в Лощину начинается на западе территории в одном из полуразрушенных тоннелей.</text>
+</string>
+
+<string id="garbage_to_peshera">
+	<text>Свалка - Пещера</text>
+</string>
+<string id="enc_garbage_to_peshera">
+	<text>Лысый в Баре рассказал, как пробраться в Пещеру со Свалки. Путь начинается в ж\д тоннеле.</text>
+</string>
+
+<string id="agro_to_peshera">
+	<text>Агропром - Пещера</text>
+</string>
+<string id="enc_agro_to_peshera">
+	<text>Лысый в Баре рассказал, как пробраться в Пещеру с Агропрома. Путь начинается в ж\д тоннеле.</text>
+</string>
+
+<string id="peshera_to_garbage">
+	<text>Пещера - Свалка</text>
+</string>
+<string id="enc_peshera_to_garbage">
+	<text>Шахтёр рассказал, как выбраться из Пещеры на Свалку. Ориентир - старая вагонетка на верхнем уровне Пещеры.</text>
+</string>
+
+<string id="peshera_to_agro">
+	<text>Пещера - Агропром</text>
+</string>
+<string id="enc_peshera_to_agro">
+	<text>Шахтёр рассказал, как выбраться из Пещеры на Агропром. Путь начинается на нижнем уровне Пещеры.</text>
+</string>
+
+<string id="peshera_to_labirint">
+	<text>Пещера - Лабиринт</text>
+</string>
+<string id="enc_peshera_to_labirint">
+	<text>Шахтёр рассказал про секретный переход из Пещеры в Лабиринт. Путь начинается на нижнем уровне Пещеры за зоной ядовитого тумана. В данный момент туман пропал, можно рискнуть пробраться в Лабиринт.</text>
+</string>
+
+<string id="labirint_to_peshera">
+	<text>Лабиринт - Пещера</text>
+</string>
+<string id="enc_labirint_to_peshera">
+	<text>Обратный путь из Лабиринта в Пещеру находится на нижнем уровне Лабиринта. Надо быть осторожным, рядом с переходом живут бюреры.</text>
+</string>
+
+<string id="labirint_to_rostok">
+	<text>Лабиринт - Дикая Территория</text>
+</string>
+<string id="enc_labirint_to_rostok">
+	<text>Сахаров рассказал, что есть выход из Лабиринта на Дикую Территорию, который находится на самом верхнем уровне Лабиринта. Дорогу к нему преграждают аномалии "электра", которые передвигаются в хаотичном порядке. Надо быть очень внимательным.</text>
+</string>
+
+<string id="rostok_to_labirint">
+	<text>Дикая Территория - Лабиринт</text>
+</string>
+<string id="enc_rostok_to_labirint">
+	<text>Сахаров поделился полезной информацией о том, что на Дикой Территории есть маленький лаз в Лабиринт. Он находится в старом тоннеле, заваленным автомобильным хламом.</text>
+</string>
+
+<string id="labirint_to_aver">
+	<text>Лабиринт - Неразведанная Земля</text>
+</string>
+<string id="enc_labirint_to_aver">
+	<text>Страшный и труднодоступный переход. Находится на самом нижнем уровне Лабиринта и ведёт в пещеру на Неразведанной Земле. Переход усиленно охраняется целой группой очень опасных монстров. Сталкеры, оставшиеся в живых, с "любовью и нежностью" прозвали этого монстра - Пушок.</text>
+</string>
+
+<string id="aver_to_labirint">
+	<text>Неразведанная Земля - Лабиринт</text>
+</string>
+<string id="enc_aver_to_labirint">
+	<text>В пещере, где Шура Гинеколог организовал свой мини-госпиталь, есть нора, ведущая на нижние уровни Лабиринта. Этот путь подсказал Циклоп, когда надо было принести дискету для перфузора.</text>
+</string>
+
+<string id="agro_to_marsh">
+	<text>Агропром - Болота</text>
+</string>
+<string id="enc_agro_to_marsh">
+	<text>При обыске трупа военного учёного была обнаружена карта, на которой отмечен малоизвестный переход с Агропрома на Болота.</text>
+</string>
+
+<string id="agro_to_yantar">
+	<text>Агропром - Янтарь</text>
+</string>
+<string id="enc_agro_to_yantar">
+	<text>В бумагах Призрака мелькнуло что-то о необозначенной дороге. Сахаров подсказал тропинку с Агропрома на Янтарь. Пришлось выложить за это ценный арт - "Бусы Бабки Бюрера". Переход расположен на севере Агропрома, неподалёку от озера.</text>
+</string>
+
+<string id="rostok_to_military">
+	<text>Дикая Территория - Армейские Склады</text>
+</string>
+<string id="enc_rostok_to_military">
+	<text>На флешке наёмника Ары была найдена информация о переходе с Ростока на Склады. Переход начинается около старого тепловоза.</text>
+</string>
+
+<string id="military_to_rostok">
+	<text>Армейские Склады - Дикая Территория</text>
+</string>
+<string id="enc_military_to_rostok">
+	<text>На флешке наёмника Ары была найдена информация о переходе со Складов на Росток. Переход начинается на стоянке наёмников на северо-западе территории Армейских Складов.</text>
+</string>
+
+<string id="bar_to_atp">
+	<text>Бар - АТП</text>
+</string>
+<string id="enc_bar_to_atp">
+	<text>Адреналин подсказал, как пробраться на территорию АТП, не за просто так, конечно. Он хочет какой-то диск с инфой. Переход из Бара начинается левее дороги, ведущей на Армейские Склады.</text>
+</string>
+
+<string id="atp_to_bar">
+	<text>АТП - Бар</text>
+</string>
+<string id="enc_atp_to_bar">
+	<text>Путь на территорию Бара с территории АТП начинается неподалёку от старого, полуразвалившегося сарая на северо-востоке.</text>
+</string>
+
+<string id="military_to_mine">
+	<text>Армейские Склады - Шахта</text>
+</string>
+<string id="enc_military_to_mine">
+	<text>Лукаш поведал о заброшенной Шахте, куда можно пробраться из ж\д тоннеля на базе Свободы. Там анархисты планируют сделать небольшой госпиталь для лечения раненных и зону отдыха.</text>
+</string>
+
+<string id="mine_to_military">
+	<text>Шахта - Армейские Склады</text>
+</string>
+<string id="enc_mine_to_military">
+	<text>Попасть из Шахты на базу Свободы можно из тоннеля, который расположен неподалёку от места, где отдыхают анархисты.</text>
+</string>
+
+<string id="darkvalley_to_mine">
+	<text>Тёмная Долина - Шахта</text>
+</string>
+<string id="enc_darkvalley_to_mine">
+	<text>Бандиты Борова прокопали небольшой ход в Шахту, пытаясь занять её первыми. Но Свободовцы оказались сильнее. Ход начинается в овраге, неподалёку от базы бандитов.</text>
+</string>
+
+<string id="mine_to_darkvalley">
+	<text>Шахта - Тёмная Долина</text>
+</string>
+<string id="enc_mine_to_darkvalley">
+	<text>Выход из Шахты в Тёмную Долину находится в старом канализационном коллекторе.</text>
+</string>
+
+<string id="radar_to_x8">
+	<text>Радар - Лаборатория Х-8</text>
+</string>
+<string id="enc_radar_to_x8">
+	<text>С Радара можно попасть в лабораторию Х-8. Вход находится в одном из тоннелей и закрыт кодовой дверью.</text>
+</string>
+
+<string id="x10_to_sarkofag">
+	<text>Лаборатория Х-10 - Саркофаг</text>
+</string>
+<string id="enc_x10_to_sarkofag">
+	<text>Из документов, которые нашлись у наёмника Тамаза, Фримен раскопал инфу про тайный переход из лаборатории Х-10 прямо в Саркофаг к Монолиту. Путь начинается в помещении с рубильником по отключению Выжигателя Мозгов.</text>
+</string>
+
+<string id="sarkofag_to_x10">
+	<text>Саркофаг - Лаборатория Х-10</text>
+</string>
+<string id="enc_sarkofag_to_x10">
+	<text>Путь из Саркофага в лабораторию Х-10 начинается в помещении с Монолитом.</text>
+</string>
+
+<string id="sarkofag_to_stancia2">
+	<text>Саркофаг - ЧАЭС-2</text>
+</string>
+<string id="enc_sarkofag_to_stancia2">
+	<text>Призрак поделился инфой о том, как из Саркофага можно напрямую попасть на ЧАЭС-2 минуя Бункер Управления Монолитом.</text>
+</string>
+
+<string id="stancia2_to_sarkofag">
+	<text>ЧАЭС-2 - Саркофаг</text>
+</string>
+<string id="enc_stancia2_to_sarkofag">
+	<text>Призрак поделился инфой о том, как через ворота на ЧАЭС-2 можно попасть внутрь Саркофага.</text>
+</string>
+
+<string id="stancia2_to_stancia1">
+	<text>ЧАЭС-2 - ЧАЭС-1</text>
+</string>
+<string id="enc_stancia2_to_stancia1">
+	<text>Из записки Стрелка у Монолита стало известно о том, что через ворота на ЧАЭС-2 на северо-западе можно перейти на территорию ЧАЭС-1. Через эти же ворота можно перейти с ЧАЭС-1 на территорию ЧАЭС-2.</text>
+</string>
+
+<string id="varlab_to_generators">
+	<text>Варлаб - Генераторы</text>
+</string>
+<string id="enc_varlab_to_generators">
+	<text>Из блокнота наёмницы Пантеры стало известно, что напротив поста охраны при входе в Варлаб, есть боковая дверь. Она ведёт в бункер, расположенный на территории Генераторов.</text>
+</string>
+
+<string id="generators_to_varlab">
+	<text>Генераторы - Варлаб</text>
+</string>
+<string id="enc_generators_to_varlab">
+	<text>На территории охраняемой базы монолитовцев на Генераторах есть бетонный бункер. Внутри есть бронированная дверь с кодовым замком, которая ведёт в Варлаб. Код от замка был найден в блокноте Пантеры.</text>
+</string>
+
+<string id="generators_to_pripyat">
+	<text>Генераторы - Припять</text>
+</string>
+<string id="enc_generators_to_pripyat">
+	<text>Призрак разведал инфу о том, что неподалёку от лагеря сталкеров-одиночек на Генераторах начинается тропа на Припять.</text>
+</string>
+
+<string id="stancia1_to_generators">
+	<text>ЧАЭС-1 - Генераторы</text>
+</string>
+<string id="enc_stancia1_to_generators">
+	<text>Призрак показал тропу с ЧАЭС-1 на территорию Генераторов.</text>
+</string>
+
+<string id="stancia1_to_vpripyat">
+	<text>ЧАЭС-1 - Восточная Припять</text>
+</string>
+<string id="enc_stancia1_to_vpripyat">
+	<text>С ЧАЭС-1 существует старая, забытая дорога в Восточную Припять. Информация найдена в документах одного из тайников.</text>
+</string>
+
+<string id="stancia2_to_atp">
+	<text>ЧАЭС-2 - АТП</text>
+</string>
+<string id="enc_stancia2_to_atp">
+	<text>Командир блок-поста на базу Свободы, за пачку антизомбина, рассказал о дороге с ЧАЭС-2 на АТП. Эта дорога начинается от ворот на юго-востоке ЧАЭС-2.</text>
+</string>
+
+<string id="limansk_to_generators">
+	<text>Лиманск - Генераторы</text>
+</string>
+<string id="enc_limansk_to_generators">
+	<text>Семецкий подсказал тропинку, ведущую из Лиманска на Генераторы.</text>
+</string>
+
+<string id="village_to_hospital">
+	<text>Старая Деревня - Припять</text>
+</string>
+<string id="enc_village_to_hospital">
+	<text>Колмогор поделился инфой как из Старой Деревни можно попасть в Припять через полуразрушенный тоннель.</text>
+</string>
+
+<string id="village_to_limansk">
+	<text>Старая Деревня - Лиманск</text>
+</string>
+<string id="enc_village_to_limansk">
+	<text>После зачистки Старой Деревни от карателей, Колмогор поделился инфой о том, как из Старой Деревни можно попасть в Лиманск. Начало пути находится на юге территории.</text>
+</string>
+
+<string id="varlab_to_x16">
+	<text>Варлаб - Х-16</text>
+</string>
+<string id="enc_varlab_to_x16">
+	<text>Клык рассказал о том, что из Варлаба есть секретный переход на верхние ярусы лаборатории Х-16.</text>
+</string>
+
+<string id="pripyat_to_vpripyat">
+	<text>Припять - Восточная Припять</text>
+</string>
+<string id="enc_pripyat_to_vpripyat">
+	<text>Генерал Воронин сообщил координаты перехода из Припяти в её восточную часть. Он просил помочь местным бойцам Долга во главе с моим старым знакомым Пличко.</text>
+</string>
+
+<string id="pripyat_to_village">
+	<text>Припять - Старая Деревня</text>
+</string>
+<string id="enc_pripyat_to_village">
+	<text>Клык скинул координаты перехода из Припяти в новое место - Старую Деревню, куда ушёл Пилигрим. Тропинка начинается неподалёку от автовокзала.</text>
+</string>
+
+<string id="generators_to_hospital">
+	<text>Генераторы - Госпиталь</text>
+</string>
+<string id="enc_generators_to_hospital">
+	<text>С территории Генераторов можно попасть в Госпиталь по старой бетонной дороге. Информация от Земляка за подбитую вертуху.</text>
+</string>
+
+<string id="kordon_to_agro">
+	<text>Кордон - Агропром</text>
+</string>
+<string id="enc_kordon_to_agro">
+	<text>Проводник подсказал короткий путь с Кордона на Агропром. Но не за просто так, пришлось отдать ему новенькую "Грозу".</text>
+</string>
+
+<string id="svalka_to_aver">
+	<text>Свалка - Неразведанная Земля</text>
+</string>
+<string id="enc_svalka_to_aver">
+	<text>Неподалёку от блок-поста Долга на Свалке в маленьком овраге начинается путь на Неразведанную Землю. Шахтёр подсказал.</text>
+</string>
+
+<string id="agro_to_kordon">
+	<text>Агропром - Кордон</text>
+</string>
+<string id="enc_agro_to_kordon">
+	<text>В кармане убитого командира военных нашёлся кусок карты с отмеченной дорогой с Агропрома на Кордон, прямо к ж\д насыпи. Короткий и безопасный путь.</text>
+</string>
+
+<string id="valley_to_aver">
+	<text>Тёмная Долина - Неразведанная Земля</text>
+</string>
+<string id="enc_valley_to_aver">
+	<text>Неподалёку от блок-поста "Долга" в Тёмной долине находится тропинка на Неразведанную Землю. Информация от Старика.</text>
+</string>
+
+<string id="valley_to_les">
+	<text>Тёмная Долина - Забытый Лес</text>
+</string>
+<string id="enc_valley_to_les">
+	<text>Калинин, командир отряда одиночек на АТП, за убитого Шныру поделился инфой. На заброшеной ферме в Тёмной Долине начинается путь в Забытый Лес.</text>
+</string>
+
+<string id="valley_to_radar">
+	<text>Тёмная Долина - Радар</text>
+</string>
+<string id="enc_valley_to_radar">
+	<text>Информация от генерала Воронина за принесённый кейс: путь из Тёмной Долины на Радар начинается неподалёку от старой заправки рядом с основной базой бандитов. Основной ориентир - старый "КАМАЗ" за колючей проволокой.</text>
+</string>
+
+<string id="x18_to_varlab">
+	<text>Х-18 - Варлаб</text>
+</string>
+<string id="enc_x18_to_varlab">
+	<text>После успешного выполнения задания профессора Клёнова, он поделился инфой: практически все подземные лаборатории связаны между собой. Из Х-18 можно попасть в Варлаб через маленькую, неприметную дверцу в комнате, где расположены 4 цилиндрических бокса для опытов.</text>
+</string>
+
+<string id="military_to_aver">
+	<text>Армейские Склады - Неразведанная Земля</text>
+</string>
+<string id="enc_military_to_aver">
+	<text>С Армейских Складов можно попасть на Неразведанную Землю. Тропинка начинается в овраге за заброшенным хутором. Информация от Старика.</text>
+</string>
+
+<string id="yntar_to_agro">
+	<text>Янтарь - Агропром</text>
+</string>
+<string id="enc_yntar_to_agro">
+	<text>Сахаров поделился переходом с Янтаря на Агропром. Этот путь был упомянут в документах военных.</text>
+</string>
+
+<string id="yntar_to_radar">
+	<text>Янтарь - Радар</text>
+</string>
+<string id="enc_yntar_to_radar">
+	<text>Рядом с трупом учёного в зелёном "научнике" лежал обрывок документа. В нём была информация о коротком пути с Янтаря на Радар. Он находится неподалёку от старого экскаватора в северно-западном углу территории Янтаря.</text>
+</string>
+
+<string id="radar_to_redforest">
+	<text>Радар - Красный Лес</text>
+</string>
+<string id="enc_radar_to_redforest">
+	<text>Путь в Красный Лес начинается поблизости от вертолёта в Мёртвом лесу Радара. Информация от Клыка.</text>
+</string>
+
+<string id="radar_to_varlab">
+	<text>Радар - Варлаб</text>
+</string>
+<string id="enc_radar_to_varlab">
+	<text>Сяк подсказал код от замка. За дверью находится переход в Варлаб.</text>
+</string>
+
+<string id="radar_to_yantar">
+	<text>Радар - Янтарь</text>
+</string>
+<string id="enc_radar_to_yantar">
+	<text>Бармен поделился инфой за то, что припёр ему ящик с документами с блок-поста вояк на Кордоне. С Радара на Янтарь ведёт короткая дорога. Начало пути - около излучателей Выжигателя Мозгов.</text>
+</string>
+
+<string id="radar_to_valley">
+	<text>Радар - Тёмная Долина</text>
+</string>
+<string id="enc_radar_to_valley">
+	<text>В старом документе, который был найден в грузовике на Радаре, указан неприметный путь в Тёмную Долину. Он начинается у камней на самом западе территории, неподалёку от развилки дорог. Ориентиром может служить грузовик "КАМАЗ".</text>
+</string>
+
+<string id="vpripyat_to_pripyat">
+	<text>Восточная Припять - Припять</text>
+</string>
+<string id="enc_vpripyat_to_pripyat">
+	<text>Путь в Припять начинается недалеко от гастронома.</text>
+</string>
+
+<string id="vpripyat_to_stancia1">
+	<text>Восточная Припять - ЧАЭС-1</text>
+</string>
+<string id="enc_vpripyat_to_stancia1">
+	<text>В одном из тайников, полученном от Матвея Кулинара, был найден листок с информацией о переходе из Восточной Припяти на ЧАЭС-1. Он находится неподалёку от кинотеатра "Прометей".</text>
+</string>
+
+<string id="vpripyat_to_puteprovod">
+	<text>Восточная Припять - Путепровод</text>
+</string>
+<string id="enc_vpripyat_to_puteprovod">
+	<text>Сахаров подсказал, что в Путепровод ведёт старая вентшахта недалеко от прачечной.</text>
+</string>
+
+<string id="vpripyat_to_upiter">
+	<text>Восточная Припять - Юпитер</text>
+</string>
+<string id="enc_vpripyat_to_upiter">
+	<text>За контейнер с беспилотника, профессор Плотников рассказал о коротком пути из Восточной Припяти на Юпитер. Он начинается за кафе "Припять" в речном порту.</text>
+</string>
+
+<string id="redforest_to_varlab">
+	<text>Красный Лес - Варлаб</text>
+</string>
+<string id="enc_redforest_to_varlab">
+	<text>В документах мёртвого боевика группировки "Последний день" указано, что неподалёку от ржавого танка и логова медведей есть нора. Через этот подкоп можно попасть в Варлаб.</text>
+</string>
+
+<string id="redforest_to_les">
+	<text>Красный Лес - Забытый Лес</text>
+</string>
+<string id="enc_redforest_to_les">
+	<text>В документах мёртвого боевика группировки "Последний день" указано, что из Красного Леса есть путь в Забытый Лес.</text>
+</string>
+</string_table>

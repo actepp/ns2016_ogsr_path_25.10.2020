@@ -1,0 +1,292 @@
+--------------------------- Dialog ---------------------------
+local exchanging_items_intro_phrase = 
+{
+    "Всё в порядке? Что-то тебя потрясывает.",
+    "Всё нормально?",
+    "Как дела?",
+    "Чего тебя так шатает?"
+}
+
+local exchanging_items_phr_1 = {"Да чую что мне жопа, брат. Рана уже зеленеет, мураши перед глазами.", "Меченый, брат, не двинуть бы мне кони... Лихорадит меня не по-детски. А врачей тут вокруге не сыскать.", "Да рана ноет, не проходит. Кровь не останавливается. Я уже не представляю что делать. Пасуда же ты, Зона...", "Дела хреновые у меня брат. Влетел в какую-то дрянь. И не сразу заметил даже. А теперь наизнанку выворачивает постоянно. "}
+local exchanging_items_phr_2 = {"Хреново мне, не видишь? Воротит.", "Температура. Высокая. ", "А тебе-то что? Пулю словил. Рана плохо заживает.", "Чего пристал? Херово мне.", "А твоё какое дело? Хреново себя чувствую."}
+
+local exchanging_items_phr_3 = {"Погано дело...", "Что-то ты рано на тот свет собрался.", "Ты кони-то не спеши откидывать, еще не всю Зону перетопал, не во все аномалии залез!", "Да хорош тебе раньше времени себя хоронить-то!" }
+local exchanging_items_phr_4 = {"Мда. Погано дело.", "Мда. Зона, сука."}
+local exchanging_items_phr_5 = {"Еще и аптечки нету. И хрен поймешь где взять.", "Да реально чую - составлю скоро компанию Семецкому. Как назло и аптечки нету нихрена."}
+local exchanging_items_phr_6 = {"Да жив - здоров, а остальное будет.", "Не жалуемся.", "Жив и здоров, как видишь."}
+
+local exchanging_items_phr_7 = {"Так давай я поделюсь аптечкой! Держи, берёг на такой случай как раз...", "Хм... Для друга не жаль аптечки. Сейчас достану, погоди."}
+local exchanging_items_phr_8 = {"Помог бы, да нету аптечки", "Эх. Нечем к сожалению помочь даже."}
+
+local exchanging_items_phr_9 = {"Брат, ты... Я реально буду очень благодарен!", "Реально? Слушай, я в долгу не останусь!", "Уверен? Аптечки тут на вес золота..."}
+local exchanging_items_phr_10 = "Вот и славненько. Забирай свое: " --ОТВЕТ НА ОТКАЗ
+
+local exchanging_items_phr_11 = {"Смотри, у меня есть... Простая аптечка. Но в ней должно быть всё, что нужно", "Держи обычную аптечку."}
+local exchanging_items_phr_12 = {"Есть армейская аптечка. Им там дополнительной дряни кладут, может пригодиться.", "Военная аптечка есть. Держи."}
+local exchanging_items_phr_13 = {"Научная аптечка есть. Хватай", "Есть научная аптечка. С ней хоть в аномалию, хоть к кровососу в логово. Но не увлекайся."}
+local exchanging_items_phr_14 = {"Спасибо брат, выручил!", "Спасибо! Да, тут должно быть то что мне нужно..."}
+local exchanging_items_phr_15 = {"Армейская аптечка... То что нужно!", "Век не забуду, дружище! Редко нормальных мужиков тут встретишь..."}
+local exchanging_items_phr_16 = {"Воу, тут реально всё есть!", "Не поверишь, ни разу не заглядывал внутрь научной аптечки. Хы."}
+
+local exchanging_items_phr_17 = {"Пойдёт. Что хотел?", "Да нормально вроде."} 
+local exchanging_items_phr_18 = {"И я о том же.", "Не то слово."}
+local exchanging_items_phr_19 = {"В принципе могу помочь. Есть лишняя аптечка.", "Эх, видит Черный Сталкер, делюсь с тобой последним. Сейчас достану аптечку."} 
+local exchanging_items_phr_20 = {"Ладно, даст Чёрный Сталкер - обойдётся.", "Ладно, вижу - реально тебе хреново. Не буду лезть."} 
+local exchanging_items_phr_21 = {"Неожиданно. Редко в последнее время встретишь нормальных мужиков.", "Уверен? С чего это тебе левому мужику вдруг помогать? Ну, если не последняя, я был бы благодарен!"} 
+ 
+
+local exchanging_items_phr_25 = {"Спасибо, друг. Теперь хоть протяну до лекаря.", "Спасбио огромное! Реально мало нормальных мужиков, как ты!"} 
+local exchanging_items_phr_26 = {"Воякам одно лекарство пихают, которое мне как раз и нужно. Спасибо, брат.", "Спасибо, брат. За мной должок!"} 
+local exchanging_items_phr_27 = {"Научная? Не жалко? Черт, с ней я быстро на ноги встану... Спасибо!", "От души, брат! Научную аптечку не всякий головастый даже с собой тоскает! Еще раз спасибо!"} 
+--
+local exchanging_items_phr_28 = {"Отвали.", "Я не хочу с тобой разговаривать.", "Мне не положено с тобой разговаривать."} 
+local aster 
+
+
+
+
+
+
+ function start(first_speaker, second_speaker)
+ amk.send_tip(second_speaker.health, second_speaker.health,1,15,"common_channel")
+ if second_speaker.health<0.8 and not second_speaker:wounded() and (not second_speaker:object("medkit") and not second_speaker:object("medkit_army") and not second_speaker:object("medkit_scientic")) then
+return true
+else
+return false
+ end 
+ end
+
+
+function init_exchanging_items_dialog(first_speaker, second_speaker, dlg) --ГЛАВНАЯ СТРУКТУРА
+local rnd = math.random
+dlg = first_speaker
+
+--   local intro_phrase = exchanging_items_intro_phrase[math.random(1, table.getn(exchanging_items_intro_phrase))]
+    phr0 = dlg:AddPhrase(exchanging_items_intro_phrase[math.random(1, table.getn(exchanging_items_intro_phrase))], "0", "", -10000)
+	phr0:GetPhraseScript():AddPrecondition("helpa.start")
+	phr1 = dlg:AddPhrase(exchanging_items_phr_1[math.random(1, table.getn(exchanging_items_phr_1))], "1", "0", -10000)  --УСЛОВИЕ
+	phr1:GetPhraseScript():AddPrecondition("helpa.friend")
+	phr2 = dlg:AddPhrase(exchanging_items_phr_2[math.random(1, table.getn(exchanging_items_phr_2))], "2", "0", -10000)
+	phr2:GetPhraseScript():AddPrecondition("helpa.not_friend")
+	phr3 = dlg:AddPhrase(exchanging_items_phr_3[math.random(1, table.getn(exchanging_items_phr_3))], "3", "1", -10000)
+	phr4 = dlg:AddPhrase(exchanging_items_phr_4[math.random(1, table.getn(exchanging_items_phr_4))], "4", "2", -10000)
+
+		phr5 = dlg:AddPhrase(exchanging_items_phr_5[math.random(1, table.getn(exchanging_items_phr_5))], "5", "3", -10000)
+		phr5:GetPhraseScript():AddPrecondition("helpa.health")
+		phr6 = dlg:AddPhrase(exchanging_items_phr_6[math.random(1, table.getn(exchanging_items_phr_6))], "6", "3", -10000)
+		phr6:GetPhraseScript():AddPrecondition("helpa.health_good")
+		phr7 = dlg:AddPhrase(exchanging_items_phr_7[math.random(1, table.getn(exchanging_items_phr_7))], "7", "5", -10000)  --предлагаем аптечку, если есть
+		phr7:GetPhraseScript():AddPrecondition("helpa.peredacha")
+		phr8 = dlg:AddPhrase(exchanging_items_phr_8[math.random(1, table.getn(exchanging_items_phr_8))], "8", "5", -10000)  --Отказываем
+--		phr8:GetPhraseScript():AddPrecondition("exchanging_items.peredacha_net")
+		phr9 = dlg:AddPhrase(exchanging_items_phr_9[math.random(1, table.getn(exchanging_items_phr_9))], "9", "7", -10000)  --предлагаем аптечку, если есть
+		phr11 = dlg:AddPhrase(exchanging_items_phr_11[math.random(1, table.getn(exchanging_items_phr_11))], "11", "9", -10000)
+		phr11:GetPhraseScript():AddPrecondition("helpa.vibor_medkit")
+		phr12 = dlg:AddPhrase(exchanging_items_phr_12[math.random(1, table.getn(exchanging_items_phr_12))], "12", "9", -10000)
+		phr12:GetPhraseScript():AddPrecondition("helpa.vibor_medkit_army")
+		phr13 = dlg:AddPhrase(exchanging_items_phr_13[math.random(1, table.getn(exchanging_items_phr_13))], "13", "9", -10000)
+		phr13:GetPhraseScript():AddPrecondition("helpa.vibor_medkit_scientic")
+		
+		phr14 = dlg:AddPhrase(exchanging_items_phr_14[math.random(1, table.getn(exchanging_items_phr_14))], "14", "11", -10000)
+		phr14:GetPhraseScript():AddPrecondition("helpa.medkit")
+		phr15 = dlg:AddPhrase(exchanging_items_phr_15[math.random(1, table.getn(exchanging_items_phr_15))], "15", "12", -10000)
+		phr15:GetPhraseScript():AddPrecondition("helpa.medkit_army")
+		phr16 = dlg:AddPhrase(exchanging_items_phr_16[math.random(1, table.getn(exchanging_items_phr_16))], "16", "13", -10000)
+		phr16:GetPhraseScript():AddPrecondition("helpa.medkit_scientic")
+		phr17 = dlg:AddPhrase(exchanging_items_phr_17[math.random(1, table.getn(exchanging_items_phr_17))], "17", "4", -10000)
+		phr17:GetPhraseScript():AddPrecondition("helpa.health_good")
+		phr18 = dlg:AddPhrase(exchanging_items_phr_18[math.random(1, table.getn(exchanging_items_phr_18))], "18", "4", -10000)
+		phr18:GetPhraseScript():AddPrecondition("helpa.health")
+		phr19 = dlg:AddPhrase(exchanging_items_phr_19[math.random(1, table.getn(exchanging_items_phr_19))], "19", "18", -10000)
+		phr19:GetPhraseScript():AddPrecondition("helpa.peredacha")
+		phr20 = dlg:AddPhrase(exchanging_items_phr_20[math.random(1, table.getn(exchanging_items_phr_20))], "20", "18", -10000)
+		phr21 = dlg:AddPhrase(exchanging_items_phr_21[math.random(1, table.getn(exchanging_items_phr_21))], "21", "19", -10000)
+		
+		phr22 = dlg:AddPhrase(exchanging_items_phr_11[math.random(1, table.getn(exchanging_items_phr_11))], "22", "21", -10000)
+		phr22:GetPhraseScript():AddPrecondition("helpa.vibor_medkit")
+		phr23 = dlg:AddPhrase(exchanging_items_phr_12[math.random(1, table.getn(exchanging_items_phr_12))], "23", "21", -10000)
+		phr23:GetPhraseScript():AddPrecondition("helpa.vibor_medkit_army")
+		phr24 = dlg:AddPhrase(exchanging_items_phr_13[math.random(1, table.getn(exchanging_items_phr_13))], "24", "21", -10000)
+		phr24:GetPhraseScript():AddPrecondition("helpa.vibor_medkit_scientic")
+		
+		phr25 = dlg:AddPhrase(exchanging_items_phr_25[math.random(1, table.getn(exchanging_items_phr_25))], "25", "22", -10000)
+		phr25:GetPhraseScript():AddPrecondition("helpa.medkit")
+		phr26 = dlg:AddPhrase(exchanging_items_phr_26[math.random(1, table.getn(exchanging_items_phr_26))], "26", "23", -10000)
+		phr26:GetPhraseScript():AddPrecondition("helpa.medkit_army")
+		phr27 = dlg:AddPhrase(exchanging_items_phr_27[math.random(1, table.getn(exchanging_items_phr_27))], "27", "24", -10000)
+		phr27:GetPhraseScript():AddPrecondition("helpa.medkit_scientic")
+--		phr28 = dlg:AddPhrase(exchanging_items_phr_28[math.random(1, table.getn(exchanging_items_phr_28))], "3", "0", -10000)  --диалог враг
+--		phr28:GetPhraseScript():AddPrecondition("helpa.enemy")
+end
+
+function peredacha(first_speaker, second_speaker)
+-- local items = {"medkit", "medkit_army", "medkit_scientic", "bandage"}
+ local a
+ if first_speaker:object("medkit") ~= nil or first_speaker:object("medkit_army")or first_speaker:object("medkit_scientic") then
+  --  amk.send_tip("есть аптечка у нас", "есть аптечка у нас", 2, 15, "common_channel")	
+	return true
+  else
+    --    amk.send_tip("нет", "нет", 2, 15, "common_channel")	
+		return false
+  end
+  
+ end
+
+
+ function enemy(first_speaker, second_speaker, dlg)
+if first_speaker:relation( second_speaker ) == game_object.enemy then
+return true
+end
+ end
+
+ function friend(first_speaker, second_speaker, dlg)
+if first_speaker:relation( second_speaker ) == game_object.friend then
+return true
+end
+ end
+ 
+  function not_friend(first_speaker, second_speaker, dlg)
+if first_speaker:relation( second_speaker ) ~= game_object.friend then
+return true
+end
+ end
+
+function medkit_scientic(first_speaker, second_speaker, item)
+local item = "medkit_scientic"
+relocate(first_speaker, second_speaker, item)
+return true
+end
+
+function medkit_army(first_speaker, second_speaker, item)
+local item = "medkit_army"
+relocate(first_speaker, second_speaker, item)
+return true
+end
+---
+function medkit(first_speaker, second_speaker, item)
+item = "medkit"
+--dialogs.relocate_item_section(first_speaker, "medkit", "in")
+--dialogs.relocate_item_section(second_speaker, "medkit", "out") --передать.
+relocate(first_speaker, second_speaker, item)
+return true
+end
+
+function vibor_medkit(first_speaker, second_speaker, dlg)
+
+ local a
+ if first_speaker:object("medkit") ~= nil then
+--    dialogs.relocate_item_section(second_speaker, "medkit", "out") --передать.
+	
+	return true
+  else
+       
+	return false
+  end
+  
+end
+
+function vibor_medkit_army(first_speaker, second_speaker, dlg)
+-- local items = {"medkit", "medkit_army", "medkit_scientic", "bandage"}
+ local a
+ if first_speaker:object("medkit_army") ~= nil then
+ --   dialogs.relocate_item_section(second_speaker, "medkit", "out") --передать.
+	
+	return true
+  else
+       	
+		return false
+  end
+  
+end
+
+function hello_dialog(dlg)  --ПРИВЕТСТВЕННЫЕ ОТВЕТЫ
+	phr1 = dlg:AddPhrase(exchanging_items_phr_1[math.random(1, table.getn(exchanging_items_phr_1))], "1", "0", -10000)  --УСЛОВИЕ
+--	phr1:GetPhraseScript():AddPrecondition("friend")
+	phr2 = dlg:AddPhrase(exchanging_items_phr_2[math.random(1, table.getn(exchanging_items_phr_2))], "2", "0", -10000)
+--	phr2:GetPhraseScript():AddPrecondition("not_friend")
+end
+
+function vibor_medkit_scientic(first_speaker, second_speaker, dlg)
+-- local items = {"medkit", "medkit_army", "medkit_scientic", "bandage"}
+ local a
+ if first_speaker:object("medkit_scientic") ~= nil then
+ --   dialogs.relocate_item_section(second_speaker, "medkit", "out") --передать.
+	
+	return true
+  else
+       	
+	return false
+  end
+end
+function relocate(npc, actor, item)
+	local objMedkt = actor:object(item)
+  	if objMedkt then
+    	actor:transfer_item(objMedkt, npc)
+    end
+end
+function medkit_scientic(first_speaker, second_speaker, item)
+local item = "medkit_scientic"
+relocate(first_speaker, second_speaker, item)
+return true
+end
+
+function medkit_army(first_speaker, second_speaker, item)
+local item = "medkit_army"
+relocate(first_speaker, second_speaker, item)
+return true
+end
+---
+function medkit(first_speaker, second_speaker, item)
+item = "medkit"
+--dialogs.relocate_item_section(first_speaker, "medkit", "in")
+--dialogs.relocate_item_section(second_speaker, "medkit", "out") --передать.
+relocate(first_speaker, second_speaker, item)
+return true
+end
+
+ function health(first_speaker, second_speaker)
+ if first_speaker.health<0.8 then
+return true
+ end end
+ 
+  function health_good(first_speaker, second_speaker)
+ if first_speaker.health>=0.8 then
+return true
+ end
+ end
+ 
+ 
+ function friend(first_speaker, second_speaker, dlg)
+ local aster
+ local a
+
+ if dialogs.is_friend(first_speaker, second_speaker) == true then
+
+	 a = true
+	 else
+	 a = false
+	 end
+return a ~= false
+ end
+ 
+  function not_friend(first_speaker, second_speaker, dlg)
+ local aster
+ local a
+
+ if dialogs.is_friend(first_speaker, second_speaker) == true then
+
+	 a = false
+	 else
+
+	 a = true
+	 end
+return a ~= false
+ end
+ 
+ function help(first_speaker, second_speaker)
+ if first_speaker:object("medkit") ~= nil then
+  --  amk.send_tip("да", "да", 2, 15, "common_channel")	
+  else
+    --    amk.send_tip("нет", "нет", 2, 15, "common_channel")	
+  end
+ end

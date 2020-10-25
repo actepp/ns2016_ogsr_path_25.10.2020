@@ -1,0 +1,70 @@
+
+
+function is_quest_npc(npc)
+	local story = INVALID_STORY_ID
+	if npc then
+		if npc.m_story_id ~= nil then
+			story = npc.m_story_id
+		else
+			story = npc:story_id()
+		end
+		if story == INVALID_STORY_ID then
+			local profile = npc:profile_name()
+			local name = npc:name()
+			if quest_profiles[profile] or quest_profiles[name] then
+				return true
+			end
+		end
+	end
+	if story ~= INVALID_STORY_ID then return true else return false end
+end
+
+
+function kill_crow()
+	local lname = level.name()
+	for id, sobj in alife():objects() do
+		local crow = level.object_by_id(id)
+		if crow and crow:section() == "m_crow" then
+			local hit = hit()
+				hit.direction = crow:direction()
+				hit.impulse = 1000
+				hit.draftsman = crow
+				hit.power = 1000
+				hit.type = hit.strike
+			crow:hit(hit)
+			release_crow(id)
+		end
+	end
+end
+
+function release_crow(id)
+	local sobj = alife():object(id)
+	if sobj then
+		alife():release(sobj, true)
+	end
+end
+
+function spawn_crow()
+	local lv = db.actor:level_vertex_id()
+	local gv = db.actor:game_vertex_id()
+	local x_offset = 0
+	local z_offset = 0
+	local y_offset = 100
+	for k=1,20 do
+	x_offset = math.random(-100,100)
+	z_offset = math.random(-100,100)
+		local pos = db.actor:position()
+		pos.x = pos.x + x_offset
+		pos.y = pos.y + y_offset
+		pos.z = pos.z + z_offset
+		alife():create("m_crow", pos, lv, gv)
+	end
+end
+
+
+save_var = ogse_unist.set_value
+load_var = ogse_unist.get_value
+load_var_safe = ogse_unist.get_value_safe
+var_exists = ogse_unist.value_exist
+delete_var = ogse_unist.remove_value
+save_or_delete_var = ogse_unist.set_or_remove_value

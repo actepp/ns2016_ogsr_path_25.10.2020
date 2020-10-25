@@ -1,0 +1,77 @@
+-- распаковка игровых архивов средствами движка
+
+function main(object_factory)
+	_G.__mm_onkey = ui_main_menu.main_menu.OnKeyboard
+	ui_main_menu.main_menu.OnKeyboard = function(wnd, dik, keyboard_action)
+		if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+			on_key_pressed(dik)
+		end
+		return _G.__mm_onkey(wnd, dik, keyboard_action)
+	end
+end
+
+local data = {
+[DIK_keys.DIK_1] = {folder = "$game_config$", 	mask = {"*.*"}},
+[DIK_keys.DIK_2] = {folder = "$game_scripts$", 	mask = {"*.script"}},
+[DIK_keys.DIK_3] = {folder = "$game_data$", 	mask = {"*levels*"}},
+[DIK_keys.DIK_4] = {folder = "$game_data$", 	mask = {"*.ogf", "*.omf", "*.dm"}},
+[DIK_keys.DIK_5] = {folder = "$game_data$", mask = {"*.ogm"}}, -- dds seq ogm thm avi
+[DIK_keys.DIK_6] = {folder = "$game_data$", 	mask = {"*.ogg"}},
+[DIK_keys.DIK_7] = {folder = "$game_shaders$", 	mask = {"*"}},
+[DIK_keys.DIK_8] = {folder = "$game_spawn$", 	mask = {"*.spawn"}},
+[DIK_keys.DIK_9] = {folder = "$game_anims$", 	mask = {"*.anm", "*.ppe"}},
+[DIK_keys.DIK_0] = {folder = "$game_data$",		flags = FS.FS_ListFiles + FS.FS_RootOnly, mask = {"*.xr","*.graph"}},
+[DIK_keys.DIK_A] = {folder = "$game_data$",		mask = {"*"}},
+}
+
+function _unpack(id)
+	local t = data[id]
+	if t then
+		for k, v in ipairs(t.mask) do
+			unpack_impl(t.folder, t.flags or FS.FS_ListFiles, v)
+		end
+	end
+end
+
+function unpack_impl(folder_alias, fl, mask)
+	local fs = getFS()
+	local file, from, to, fname
+	local fcnt = 0
+	local folder = fs:update_path(folder_alias,""):gsub("gamedata\\","unpack\\",1)
+	local flist = fs:file_list_open_ex(folder_alias, fl, mask)
+	for i = 0, flist:Size()-1 do
+		file = flist:GetAt(i)
+		if file then
+			fname = file:NameFull()
+			from = fs:update_path(folder_alias, fname)
+			to = folder..fname
+			-- get_console():execute("copy_from:"..from:gsub("%s",""))
+			-- get_console():execute("copy_to:"..to:gsub("%s",""))
+			if not fs:exist(to) then
+				fs:file_copy(from, to)
+				fcnt = fcnt + 1
+			end
+		end
+	end
+	-- get_console():execute("from["..folder_alias.."]copied:["..fcnt.."]files")
+end
+
+function on_key_pressed(dik)
+	if dik == DIK_keys.DIK_F3 then
+		get_console():execute("unpack_commands:")
+		get_console():execute("1-configs")
+		get_console():execute("2-scripts")
+		get_console():execute("3-levels")
+		get_console():execute("4-meshes")
+		get_console():execute("5-textures")
+		get_console():execute("6-sounds")
+		get_console():execute("7-shaders")
+		get_console():execute("8-spawns")
+		get_console():execute("9-anims")
+		get_console():execute("0-others")
+		get_console():execute("A-all")
+		get_console():execute("f4-print_this_help")
+	else
+		_unpack(dik)
+	end
+end

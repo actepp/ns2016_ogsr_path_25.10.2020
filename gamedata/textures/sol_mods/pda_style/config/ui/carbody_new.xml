@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding="UTF-8"?>
+
+<window>
+
+	<main x=0 y=0 width=1024 height=768/>
+
+	<static_icon x="742" y="79" width="200" height="192">
+		<texture></texture>
+		<texture_offset x="10" y="8"/>
+	</static_icon>
+	<static_icon x="742" y="365" width="200" height="192">
+		<texture></texture>
+		<texture_offset x="10" y="8"/>
+	</static_icon>
+
+	<our_bag_static x="378" y="73" width="552" height="284">
+		<texture>ui_stalk_frame5</texture>
+		<text x="424" y="256" font="graffiti22" r="238" g="153" b="26" complex_mode="1"/>
+	</our_bag_static>
+
+	<dragdrop_list_our x="0" y="0" width="379" height="284"
+			cell_width = "26" cell_height="26" rows_num="11" cols_num="14"
+			unlimited="1" group_similar="1"/>
+
+	<others_bag_static x="378" y="359" width="552" height="284">
+		<texture>ui_stalk_frame5</texture>
+		<text x="429" y="228" font="graffiti22" r="255" g="255" b="255" a="128">st_items</text>
+	</others_bag_static>
+
+	<dragdrop_list_other x="0" y="0" width="379" height="284"
+			cell_width="26" cell_height="26" rows_num="11" cols_num="14"
+			unlimited="1" group_similar="1"/>
+
+	<frame_window x="98" y="73" width="278" height="570" stretch="1">
+		<texture></texture>	
+	</frame_window>
+
+	<descr_static x="0" y="0" width="278" height="570">
+        <text x="25" y="0" font="letterica16" r="238" g="155" b="23"></text>
+		<texture>ui_stalk_frame4</texture>
+	</descr_static>
+
+	<auto_static x="815" y="300" width="60" height="30">
+		<text font="graffiti22" r="255" g="255" b="255" a="128">ui_inv_bag</text>
+	</auto_static>
+
+	<top_background x=0 y=0 width=1024 height=768>
+		<texture>ui\ui_pda</texture>
+	</top_background>
+
+	<bottom_background x=0 y=736 width=1024 height=32>
+		<texture>ui\ui_bottom_background</texture>
+	</bottom_background>
+
+	<take_all_btn x="781" y="613" width="123" height="26"  hR="255" hB="83" hG="179" highlight_text="1">
+        <texture>ui_button_s</texture>
+        <text align="c" font="graffiti22" r="238" g="153" b="26">ui_st_take_all</text>
+	</take_all_btn>
+
+</window>
+

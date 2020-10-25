@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<!-- переделано для миникарты -->
+<window x="000" y="000" w="640" h="480" r="227" g="121" b="222" texture="1">
+
+    <state_normal x="770" y="125" width="150" height="33" stretch="1"> 
+        <texture>ui_hud_soldier_normal_sol</texture>
+    </state_normal>
+
+    <state_crouch x="770" y="125" width="150" height="33" stretch="1"> 
+        <texture>ui_hud_soldier_crouch_sol</texture>
+    </state_crouch>
+
+    <state_creep x="770" y="125" width="150" height="33" stretch="1"> 
+        <texture>ui_hud_soldier_creep_sol</texture>
+    </state_creep>
+
+    <state_climb x="770" y="125" width="150" height="33" stretch="1"> 
+        <texture>ui_hud_soldier_climb_sol</texture>
+    </state_climb>
+
+    <state_run x="770" y="125" width="150" height="33" stretch="1"> 
+        <texture>ui_hud_soldier_run_sol</texture>
+    </state_run>
+
+    <state_sprint x="770" y="125" width="150" height="33" stretch="1"> 
+        <texture>ui_hud_soldier_sprint_sol</texture>
+    </state_sprint>
+
+    <background  x="47" y="58" width="52" height="7" stretch="1">
+        <texture>ui_hud_shkala_stamina_sol</texture>
+    </background>
+    
+    <power_progress  x="1" y="1" width="50" height="5" horz="1" min="0" max="94" pos="50">
+        <progress>
+            <texture>ui_hud_shk_stamina_sol</texture>
+        </progress>
+    </power_progress>
+    
+    <luminosity_progress x="924" y="120" width="5" height="25" horz="0" min="0" max="200" pos="50">
+        <progress>
+            <texture>ui_hud_shk_light</texture>
+        </progress>
+    </luminosity_progress>
+    
+    <noise_progress x="934" y="120" width="5" height="25" horz="0" min="0" max="200" pos="50">
+        <progress>
+            <texture>ui_hud_shk_noise</texture>
+        </progress>
+    </noise_progress>
+</window>

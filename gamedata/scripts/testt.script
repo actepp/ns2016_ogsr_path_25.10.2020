@@ -1,0 +1,117 @@
+local tab = {"начало"}  --наблица положительных неписей (не врагов)
+local tab_newbIes = {"new"}
+
+
+function is_npc_newbie(sobj)
+	local m_rank = ""
+	if (sobj) then
+		m_rank = ranks.get_obj_rank_name(sobj)
+		if (m_rank == "novice") then
+--			amk.send_tip(m_rank, m_rank, 5, 15, "stalkers_chat")		
+			return true
+		end
+	end
+end
+
+
+function IsNpcStalker(sobj)  --(функци€ проверки услови€ "≈сли сталкер, долг, свобода, небо или грин"
+	local m_s_c = ""
+	if (sobj) then
+			if (sobj.character_community) then				
+				m_s_c = sobj:character_community()
+			elseif (sobj.community) then
+				m_s_c = sobj:community()
+			end
+	end
+	if (m_s_c == "stalker" or m_s_c == "green" or m_s_c == "ecolog" or m_s_c == "nebo") then
+		if (sobj.name and sobj:name() ~= "agr_ratcatcher") then
+--			amk.send_tip("есть попытка", "есть попытка", 3, 15, "stalkers_chat")
+			return true
+		end
+	end
+end
+
+function npc_new()
+return tab_newbIes[math.random(#tab_newbIes)]
+end
+
+
+function name_npc()
+local npc = ogo()
+local fake_name = "ќлег Ѕесполезный"
+local obj = npc.id
+if obj then -- затычка начало
+local sobj = alife():object(obj)
+
+
+local price = 40
+	if xr_logic.pstor_retrieve(db.actor, "bank") == nil then
+	
+	else
+	local mmoney = xr_logic.pstor_retrieve(db.actor, "bank")
+	xr_logic.pstor_store(db.actor, "bank", mmoney + 40)
+	xr_logic.pstor_store(db.actor, "bank")
+	end
+
+local sum = 40 -- здесь кол-во денег, котрое хотим отн€ть
+local pk
+if sobj then pk = get_netpk(sobj) elseif not sobj then return fake_name end
+if sobj:alive() and pk and pk:isOk() then
+	local data = pk:get()
+	if data.money and data.money > sum then
+		local itog = data.money
+--		amk.send_tip(itog, "ƒенег до", 1, 15, "common_channel")
+		data.money = data.money - sum
+		
+	else
+		data.money = 0 -- отнимаем сколько есть, если не хватает
+--		amk.send_tip("денег нет", "деньги", 2, 15, "common_channel")
+		local a 
+		return a
+	end
+	pk:set(data)
+	local itog_2 = data.money
+--	amk.send_tip(itog_2, "денег опосл€", 5, 15, "common_channel")
+	return npc.name
+else
+	return fake_name 
+end
+end	
+end
+
+function ogo()
+return tab[math.random(#tab)]
+end
+
+function table_update_pda()
+tab = {"clear"}
+local iid
+--amk.send_tip("“аблицу обновили", "“аблицу обновили", 2, 15, "common_channel")	
+	for i = 1, 65535 do
+		local sobj = alife():object(i)
+		if (sobj) and IsNpcStalker(sobj) and sobj:alive() then 
+		
+		local pk = get_netpk(sobj)
+			if pk and pk:isOk() 
+			then
+--				amk.send_tip("середина", "середина", 5, 15, "common_channel")
+				local data = pk:get()
+				local charname = data.character_name
+				table.insert(tab, {id = sobj.id, name = data.character_name})
+					--if (sobj) and is_npc_newbie(sobj) then
+					--table.insert(tab_newbIes, charname)
+--					amk.send_tip("новичок добавлен", "новичок", 5, 15, "common_channel")	
+					--end
+					
+			end	
+
+		end
+--			amk.send_tip("конец", "конец", 13, 15, "common_channel")
+	end
+end
+
+function table_check()
+for i = 1, 1 do
+--amk.send_tip(tab[math.random(#tab)], "Ёто протеститровали", 5, 15, "common_channel")	
+end
+end

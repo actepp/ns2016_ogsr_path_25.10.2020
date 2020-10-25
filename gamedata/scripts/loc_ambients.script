@@ -1,0 +1,138 @@
+--ambient
+function ambient() --Главная, определяющая локацию и эмбиент
+local vol 
+if level.name() == "marsh" then
+		local sound_marsh = xr_sound.get_safe_sound_object("marsh_bkg_1")	--sound_object(snd.."_pda")
+		
+		local sound_under = xr_sound.get_safe_sound_object("underground_bkg_1")	--sound_object(snd.."_pda")
+			if sound_marsh and sound_marsh:playing() then
+			sound_marsh = nil
+			else
+			sound_marsh:play_at_pos(db.actor, vector():set(0,0,0), sound_object.s2d, sound_object.looped)
+			sound_marsh.volume = 0.6
+			end		
+	elseif isIsolatedLevel() then
+		local sound_all = xr_sound.get_safe_sound_object("wind_bkg_1")	--sound_object(snd.."_pda")
+		if sound_all and sound_all:playing() then
+			sound_all = nil
+			else
+			sound_all:play_at_pos(db.actor, vector():set(0,0,0), sound_object.s2d, sound_object.looped)
+			sound_all.volume = 0.6
+			end		
+	
+	elseif under() then
+		local sound_und = xr_sound.get_safe_sound_object("underground_bkg_1")	--sound_object(snd.."_pda")
+		if sound_und and sound_und:playing() then
+			sound_und = nil
+			else
+			sound_und:play_at_pos(db.actor, vector():set(0,0,0), sound_object.s2d, sound_object.looped)
+			sound_und.volume = 0.6
+			
+		end
+	end
+end
+
+function unknow()
+local m_h = level:get_time_hours()
+local m_m = level:get_time_minutes()
+local m_t = m_h * 60 + m_m
+local interval = 20
+--for i = 1, 6 do
+
+
+end
+--end
+
+function amb_night()
+local sound_night = xr_sound.get_safe_sound_object("night_bkg_1")
+local m_h = level:get_time_hours()
+local m_m = level:get_time_minutes()
+local m_t = m_h * 60 + m_m
+if sound_night and sound_night:playing() and isIsolatedLevel() then
+	if (m_t >= 20*60 and m_t <= 21*60 + 21) then -- самое тихое
+
+		sound_night.volume = 0.1
+	elseif (m_t >= 21*60 + 22 and m_t <= 22*60) then -- самое тихое
+
+		sound_night.volume = 0.2
+	elseif (m_t >= 22*60 + 1 and m_t <= 22*60 + 22) then -- самое тихое
+
+		sound_night.volume = 0.3
+	elseif (m_t >= 22*60 + 23 and m_t <= 22*60 + 50) then -- самое тихое
+
+		sound_night.volume = 0.5
+	elseif (m_t >= 22*60 + 51 and m_t <= 23*60 + 59) or (m_t >= 0*60  and m_t <= 3*60 + 29) then -- самое тихое
+
+		sound_night.volume = 0.6
+	elseif (m_t >= 3*60 + 30 and m_t <= 4*60) then -- самое тихое
+
+		sound_night.volume = 0.5
+	elseif (m_t >= 4*60 + 1 and m_t <= 4*60+20) then -- самое тихое
+
+		sound_night.volume = 0.3
+	elseif (m_t >= 4*60 + 21 and m_t <= 4*60+28) then -- самое тихое
+
+		sound_night.volume = 0.1
+	elseif (m_t >= 4*60 + 29 and m_t <= 19*60+59) then -- самое тихое
+
+		sound_night.volume = 0
+	
+	
+	
+	
+	
+	elseif (m_t >= 20*60 and m_t <= 21*60 + 21) then -- самое тихое
+		sound_night.volume = 0.1
+	elseif (m_t >= 21*60 + 22 and m_t <= 22*60) then -- самое тихое
+		sound_night:play_at_pos(db.actor, vector():set(0,0,0), sound_object.s2d, sound_object.looped)
+				sound_night = xr_sound.get_safe_sound_object("night_bkg_1")
+		sound_night.volume = 0.2
+	elseif (m_t >= 22*60 + 1 and m_t <= 22*60 + 22) then -- самое тихое
+		sound_night:play_at_pos(db.actor, vector():set(0,0,0), sound_object.s2d, sound_object.looped)
+				sound_night = xr_sound.get_safe_sound_object("night_bkg_1")
+		sound_night.volume = 0.3
+	elseif (m_t >= 22*60 + 23 and m_t <= 22*60 + 50) then -- самое тихое
+		sound_night:play_at_pos(db.actor, vector():set(0,0,0), sound_object.s2d, sound_object.looped)
+				sound_night = xr_sound.get_safe_sound_object("night_bkg_1")
+		sound_night.volume = 0.5
+	elseif (m_t >= 22*60 + 51 and m_t <= 23*60 + 59) or (m_t >= 0*60  and m_t <= 3*60 + 29) then -- самое тихое
+		sound_night:play_at_pos(db.actor, vector():set(0,0,0), sound_object.s2d, sound_object.looped)
+				sound_night = xr_sound.get_safe_sound_object("night_bkg_1")
+		sound_night.volume = 0.6
+	elseif (m_t >= 3*60 + 30 and m_t <= 4*60) then -- самое тихое
+		sound_night:play_at_pos(db.actor, vector():set(0,0,0), sound_object.s2d, sound_object.looped)
+				sound_night = xr_sound.get_safe_sound_object("night_bkg_1")
+		sound_night.volume = 0.5
+	elseif (m_t >= 4*60 + 1 and m_t <= 4*60+20) then -- самое тихое
+		sound_night:play_at_pos(db.actor, vector():set(0,0,0), sound_object.s2d, sound_object.looped)
+				sound_night = xr_sound.get_safe_sound_object("night_bkg_1")
+		sound_night.volume = 0.3
+	elseif (m_t >= 4*60 + 21 and m_t <= 4*60+28) then -- самое тихое
+		sound_night:play_at_pos(db.actor, vector():set(0,0,0), sound_object.s2d, sound_object.looped)
+				sound_night = xr_sound.get_safe_sound_object("night_bkg_1")
+		sound_night.volume = 0.1
+	elseif (m_t >= 4*60 + 29 and m_t <= 19*60+59) then -- самое тихое
+		sound_night:play_at_pos(db.actor, vector():set(0,0,0), sound_object.s2d, sound_object.looped)
+				sound_night = xr_sound.get_safe_sound_object("night_bkg_1")
+		sound_night.volume = 0
+	end
+end
+end
+
+function isIsolatedLevel()
+	local result = true
+	local ln = level.name()
+	if (ln == "l03u_agr_underground" or ln == "l04u_labx18" or ln == "l08u_brainlab" or ln == "l10u_bunker" or ln == "peshera") then
+		result = false
+	end
+	return result
+end
+
+function under()
+	local result = false
+	local ln = level.name()
+	if (ln == "l03u_agr_underground" or ln == "l04u_labx18" or ln == "l08u_brainlab" or ln == "l10u_bunker" or ln == "peshera") then
+		result = true
+	end
+	return result
+end

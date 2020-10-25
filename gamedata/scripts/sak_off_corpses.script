@@ -1,0 +1,433 @@
+--' Изночальный скрипт Sak
+--" Правили все
+---' revision and adaptation for NS_2016 lsclon 11.05.17 '---
+--' sak_off_corpses. Схема удаления трупов и разного хлама.
+
+-- оптимизация
+local table_insert = table.insert
+local table_remove = table.remove
+local table_sort = table.sort
+local math_floor = math.floor
+
+-- удаления трупов сталкеров
+local tabl_corpses = {}            -- все мёртвые сталкеры
+local tabl_stalkers = {}           -- живые сталкеры на удаление бронников из инвентаря
+local tabl_outfits_all = {}        -- все бронники в рюкзаках у сталкеров
+local tabl_hlams_all = {}          -- весь хлам в рюкзаках у сталкеров
+local tabl_wpn_all = {}            -- всё оружие в рюкзаках у сталкеров
+
+-- удаления трупов монстров
+local tabl_monsters_dead = {}      --все мёртвые монстры
+
+-- броники
+local tabl_outfits = {} -- все бесхозные броники
+
+-- бесхозное оружие
+local tabl_weapons = {} -- всё бесхозное оружие
+
+-- хлам
+local tabl_hlam = {} -- безхозный хлам
+
+-- список предметов, которые точно игнорируются (поиск по точному совпадению)
+local tabl_items_remove = {
+	["device_torch"] = true,
+	["device_torch_clon"] = true,
+	["device_pda"] = true
+}
+
+-- гранаты
+local tabl_grenade = {
+	[clsid.wpn_grenade_f1] = true,
+	[clsid.wpn_grenade_rgd5] = true,
+	[clsid.wpn_ammo_vog25] = true,
+	[clsid.wpn_ammo_m209] = true
+}
+
+local tabl_parent_items = {} -- таблица списков предметов у живых неписей
+
+
+function off_corpses_0()
+end
+
+function off_corpses_single(sobj, a_lvl, s_lvl)
+	if sobj then
+		local sim = alife()
+		local cls = sobj:clsid()
+		local strn_id, strn
+		-- Проверка существования назначенного смарта (для людей и зверей).
+		if npc_by_clsid[cls] then
+			if sobj.smart_terrain_id then
+				strn_id = sobj:smart_terrain_id()
+				if strn_id ~= 65535 then
+					strn = sim:object(strn_id)
+					if not strn or strn:clsid() ~= clsid.smart_terrain then
+						get_console():execute("load ~~~ Внимание! Регистрация в несуществующий смарт: "..sobj:name().." ид смарта: "..tostring(strn_id))
+						sobj:clear_smart_terrain()
+					end
+					if strn and strn:clsid() == clsid.smart_terrain then
+						if not sobj:alive() then
+							get_console():execute("load ~~~ Внимание! Труп в смарте: "..sobj:name().." смарт: "..tostring(strn:name()))
+							strn:unregister_npc(sobj)
+						end
+					end
+				end
+			end
+		end
+		-- Удаляются собаки-фантомы
+		if IAmAMonster[cls] and cls == clsid.psy_dog_phantom_s then
+			sim:release(sobj,true)
+		end
+		-- Сбор информации за пределами текущей локации
+		if s_lvl ~= a_lvl then
+			-- Сталкеры
+			if IAmAStalker[cls] then
+				-- Исключаем необысканные трупы (с сидом или из таблицы запрета)
+				if not sobj:alive() and not protected_items.cleanerDoNotTouchStalkersCorps(sobj) then
+					table_insert(tabl_corpses, sobj)
+				end
+			else
+				-- Монстры
+				if IAmAMonster[cls] then
+					-- Исключаем необысканные трупы (с сидом или из таблицы запрета)
+					if not sobj:alive() and not protected_items.cleanerDoNotTouchStalkersCorps(sobj) then
+						table_insert(tabl_monsters_dead, sobj)
+					end
+				end
+			end
+			-- Предметы
+			if sobj.parent_id and sobj.parent_id ~= 0 then
+				-- Затерянные на просторах зоны
+				if sobj.parent_id == 65535 then
+					-- Оружие
+					if IAmAWeapon[cls] and not protected_items.cleanerDoNotTouchWeapon(sobj) then
+						-- Исключаем с сидом, ружъё охотника, уникальные
+						table_insert(tabl_weapons, sobj)
+					end
+					-- Бронники
+					if IAmAOutfit[cls] and not protected_items.cleanerDoNotTouchOutfit(sobj) then
+						-- Исключаем с сидом, из алспавна, невидимку и скат15
+						table_insert(tabl_outfits, sobj)
+					end
+					-- Прочий хлам
+					if IAmAHlam[cls] and not protected_items.cleanerDoNotTouchHlam(sobj) then
+						-- Исключаем с сидом, из алспавна, квестовые
+							table_insert(tabl_hlam, sobj)
+					end
+				else
+					local s_parent = sim:object(sobj.parent_id)
+					local s_parent_id
+					if s_parent and IAmAStalker[s_parent:clsid()] --[[and s_parent:alive()]] then
+						-- Бронники в рюкзаках не сидовых НПС
+						if cls == clsid.equ_stalker_s and s_parent.m_story_id == 4294967295 and not protected_items.outfit_to_npc(sobj) then
+							table_insert(tabl_outfits_all, sobj)
+							s_parent_id = s_parent.id
+						end
+						local sect = s_parent:section_name()
+						if sect ~= "stalker_trader" and sect ~= "m_barman" then
+							-- Прочий хлам - исключаем с сидом, из алспавна, квестовые
+							if IAmAHlam[cls] and not protected_items.cleanerDoNotTouchHlam(sobj) then
+								table_insert(tabl_hlams_all, sobj)
+								s_parent_id = s_parent.id
+							end
+							-- Гитары, гармошки и так помелочи
+							if cls == clsid.obj_attachable and protected_items.attach_to_npc(sobj) then
+								table_insert(tabl_hlams_all, sobj)
+								s_parent_id = s_parent.id
+							end
+							-- Оружие - исключаем с сидом, из алспавна, квестовые
+							--if IAmAWeapon[cls] and not protected_items.cleanerDoNotTouchWeapon(sobj) then
+							-- Пока только гранаты
+							if tabl_grenade[cls] then
+								table_insert(tabl_wpn_all, sobj)
+								s_parent_id = s_parent.id
+							end
+						end
+					end
+					if s_parent_id then
+						if s_parent:alive() then
+								table_insert(tabl_stalkers, s_parent_id)
+						else
+							if not tabl_parent_items[s_parent_id] then
+								tabl_parent_items[s_parent_id] = {}
+							end
+							table_insert(tabl_parent_items[s_parent_id], sobj.id)
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+function off_corpses_2()
+	local sim = alife()
+
+	-- отбираем у сталкеров весь хлам
+	table_sort(tabl_outfits_all, maxOutfit)
+
+	local stalkers_total = #tabl_stalkers
+	for i = 1, stalkers_total do
+		clear_outfits(tabl_stalkers[i])
+		clear_wpn(tabl_stalkers[i])
+		clear_hlams(tabl_stalkers[i])
+	end
+
+	--зачистка мёртвых монстров
+	local tm = #tabl_monsters_dead
+	if tm > 0 then
+		local mobs, s_mob
+		while tm > 0 do
+			mobs = tabl_monsters_dead[tm]
+			if mobs and mobs.id then
+				s_mob = sim:object(mobs.id)
+				if s_mob and IAmAMonster[s_mob:clsid()] and not s_mob:alive() then
+					sim:release(s_mob, true)
+				end
+			end
+			table_remove(tabl_monsters_dead, tm)
+			tm = tm - 1
+		end
+	end
+
+	--зачистка мёртвых человеков
+	local tc = #tabl_corpses
+	if tc > 0 then
+		local corps, item
+		while tc > 0 do
+			corps = tabl_corpses[tc]
+			item = item_found(corps)
+			if not item then
+				sim:release(corps, true)
+			end
+			table_remove(tabl_corpses, tc)
+			tc = tc - 1
+		end
+	end
+
+	--зачистка оружия
+	local twa = #tabl_weapons
+	if twa > 0 then
+		local wpn, s_wpn
+		while twa > 0 do
+			wpn = tabl_weapons[twa]
+			if wpn and wpn.id then
+				s_wpn = sim:object(wpn.id)
+				if s_wpn and IAmAWeapon[s_wpn:clsid()] and s_wpn.parent_id and s_wpn.parent_id == 65535 then
+					sim:release(s_wpn, true)
+				end
+			end
+			table_remove(tabl_weapons, twa)
+			twa = twa - 1
+		end
+	end
+
+	--зачистка броников
+	local two = #tabl_outfits
+	if two > 0 then
+		local outfit, s_outfit
+		while two > 0 do
+			outfit = tabl_outfits[two]
+			if outfit and outfit.id then
+				s_outfit = sim:object(outfit.id)
+				if s_outfit and s_outfit:clsid() == clsid.equ_stalker_s and s_outfit.parent_id and s_outfit.parent_id == 65535 then
+					sim:release(s_outfit, true)
+				end
+			end
+			table_remove(tabl_outfits, two)
+			two = two - 1
+		end
+	end
+
+	--зачистка хлама
+	local twh = #tabl_hlam
+	if twh > 0 then
+		local hlam, s_hlam
+		while twh > 0 do
+			hlam = tabl_hlam[twh]
+			if hlam and hlam.id then
+				s_hlam = sim:object(hlam.id)
+				if s_hlam and IAmAHlam[s_hlam:clsid()] and s_hlam.parent_id and s_hlam.parent_id == 65535 then
+					sim:release(s_hlam, true)
+				end
+			end
+			table_remove(tabl_hlam, twh)
+			twh = twh - 1
+		end
+	end
+end 
+
+function item_found(corps)
+	local result = false
+	local items = tabl_parent_items[corps.id]
+	if items then
+		local sim = alife()
+		-- проверяем парента
+		local s_parent = sim:object(corps.id)
+		if s_parent and IAmAStalker[s_parent:clsid()] and not s_parent:alive() then
+			local item
+			for i = 1, #items do
+				item = sim:object(items[i])
+				if item then 
+					if item_keep(item) then
+						result = true
+						break
+					end
+				end 
+			end
+		else
+			result = true
+		end
+	end
+	return result
+end
+
+-- предметы запрещающие удалять труп до обыска ГГ
+function item_keep(item)
+	return (tabl_items_remove[item:section_name()] ~= true and protected_items.cleanerDoNotTouchItem(item))
+end
+
+-- бронник - оставляем один - самый ценный
+function clear_outfits(id)
+	local sim = alife()
+	local all_outfits = 0
+	local count = #tabl_outfits_all
+	local cost, money = 0, 0
+	local outfit, s_outfit
+	for i = count, 1, -1 do
+		outfit = tabl_outfits_all[i]
+		if outfit and outfit.id then
+			s_outfit = sim:object(outfit.id)
+			if s_outfit and s_outfit.parent_id and s_outfit.parent_id == id then
+				all_outfits = all_outfits + 1
+				if all_outfits > 1 then
+					cost = get_item_cost(s_outfit)
+					if cost > 10 then
+						money = money + math_floor(cost / 10)
+					end
+					sim:release(s_outfit, true)
+				end
+				table_remove(tabl_outfits_all, i)
+			end
+		end
+	end
+	if (money > 0) then
+		local npc = sim:object(id)
+		local tbl = amk.read_stalker_params(npc)
+		local old_money = tbl.money
+		if not old_money then
+			old_money = 0
+		end
+		tbl.money = old_money + money
+		amk.write_stalker_params(tbl, npc)
+	end
+end
+
+-- удаление оружия из инвентаря неписей
+function clear_wpn(id)
+	local sim = alife()
+	local count = #tabl_wpn_all
+	local cost, money = 0, 0
+	local wpn, s_wpn
+	for i = count, 1, -1 do
+		wpn = tabl_wpn_all[i]
+		if wpn and wpn.id then
+			s_wpn = sim:object(wpn.id)
+			if s_wpn and s_wpn.parent_id and s_wpn.parent_id == id then
+				cost = get_item_cost(s_wpn)
+				if cost > 10 then
+					money = money + math_floor(cost / 10)
+				end
+				sim:release(s_wpn, true)
+				table_remove(tabl_wpn_all, i)
+			end
+		end
+	end
+	if (money > 0) then
+		local npc = sim:object(id)
+		local tbl = amk.read_stalker_params(npc)
+		local old_money = tbl.money
+		if not old_money then
+			old_money = 0
+		end
+		tbl.money = old_money + money
+		amk.write_stalker_params(tbl, npc)
+	end
+end
+
+-- удаление хлама из инвентаря неписей
+function clear_hlams(id)
+	local sim = alife()
+	local count = #tabl_hlams_all
+	local cost, money = 0, 0
+	local hlam, s_hlam
+	for i = count, 1, -1 do
+		hlam = tabl_hlams_all[i]
+		if hlam and hlam.id then
+			s_hlam = sim:object(hlam.id)
+			if s_hlam and s_hlam.parent_id and s_hlam.parent_id == id then
+				cost = get_item_cost(s_hlam)
+				if cost > 10 then
+					money = money + math_floor(cost / 10)
+				end
+				sim:release(s_hlam, true)
+				table_remove(tabl_hlams_all, i)
+			end
+		end
+	end
+	if (money > 0) then
+		local npc = sim:object(id)
+		local tbl = amk.read_stalker_params(npc)
+		local old_money = tbl.money
+		if not old_money then
+			old_money = 0
+		end
+		tbl.money = old_money + money
+		amk.write_stalker_params(tbl, npc)
+	end
+end
+
+-- возвращает true если i1 меньше i2 (самые ценные в конце таблицы)
+function maxOutfit(i1,i2)
+	return get_item_cost(i1) < get_item_cost(i2)
+end
+
+-- считывает стоимость предметов (серверный объект)
+function get_item_cost(item)
+	if (item and item.section_name) then
+		return getIniValueFloatSimple(item:section_name(), "cost", 0)
+	end
+	return 0
+end
+
+function purge()
+	tabl_corpses = nil
+	tabl_stalkers = nil
+	tabl_outfits_all = nil
+	tabl_hlams_all = nil
+	tabl_wpn_all = nil
+
+	tabl_monsters_dead = nil
+
+	tabl_weapons = nil
+
+	tabl_outfits = nil
+
+	tabl_hlam = nil
+
+	tabl_items_remove = nil
+	tabl_parent_items = nil
+
+	maxOutfit = nil
+	clear_outfits = nil
+	item_keep = nil
+	item_found = nil
+	off_corpses_2 = nil
+	off_corpses_single = nil
+	off_corpses_0 = nil
+	get_item_cost = nil
+
+	table_insert = nil
+	table_remove = nil
+	table_sort = nil
+	math_floor = nil
+end

@@ -1,0 +1,321 @@
+-- -*- mode: lua; coding: windows-1251-dos -*-
+
+function attach( sm )
+	sm:subscribe({ signal = "inv_drag_drop", fun = this.inv_drag_drop })
+--	sm:subscribe({ signal = "on_inventory_open",    fun = this.on_inventory_open    })
+	sm:subscribe({ signal = "on_item_to_ruck",    fun = this.on_item_to_ruck    })
+end
+
+
+
+local ammo_mag_pairs = {	
+	{ -- ammo_9x18
+		["mag_8_ammo_9x18_pmm"] = "ammo_9x18_pmm", -- wpn_pm, wpn_pb
+		["mag_8_ammo_9x18_fmj"] = "ammo_9x18_fmj",
+		
+		["mag_12_ammo_9x18_pmm"] = "ammo_9x18_pmm", -- wpn_fort
+		["mag_12_ammo_9x18_fmj"] = "ammo_9x18_fmj",
+		
+		["mag_14_ammo_9x18_pmm"] = "ammo_9x18_pmm", -- wpn_fort_m1
+		["mag_14_ammo_9x18_fmj"] = "ammo_9x18_fmj",
+		
+		["mag_16_ammo_9x18_pmm"] = "ammo_9x18_pmm", -- wpn_wather_m1
+		["mag_16_ammo_9x18_fmj"] = "ammo_9x18_fmj",
+		
+		["mag_20_ammo_9x18_pmm"] = "ammo_9x18_pmm", -- wpn_aps_sk1, wpn_scorpion
+		["mag_20_ammo_9x18_fmj"] = "ammo_9x18_fmj",
+		
+		["mag_27_ammo_9x18_pmm"] = "ammo_9x18_pmm", -- wpn_oc33
+		["mag_27_ammo_9x18_fmj"] = "ammo_9x18_fmj",
+		
+		["mag_30_ammo_9x18_pmm"] = "ammo_9x18_pmm", -- wpn_mp5_m1, wpn_mp5_kalibr, wpn_mp7a3_kalibr
+		["mag_30_ammo_9x18_fmj"] = "ammo_9x18_fmj",
+		
+		["mag_32_ammo_9x18_pmm"] = "ammo_9x18_pmm", -- wpn_uzi_kalibr
+		["mag_32_ammo_9x18_fmj"] = "ammo_9x18_fmj",
+		
+		["mag_64_ammo_9x18_pmm"] = "ammo_9x18_pmm", -- wpn_bizon, wpn_bizon1
+		["mag_64_ammo_9x18_fmj"] = "ammo_9x18_fmj",
+	},
+	
+	{ -- ammo_9x19
+	
+		["mag_13_ammo_9x19_pbp"] = "ammo_9x19_pbp", -- wpn_hpsa
+		["mag_13_ammo_9x19_fmj"] = "ammo_9x19_fmj",
+		
+		["mag_15_ammo_9x19_pbp"] = "ammo_9x19_pbp", -- wpn_beretta
+		["mag_15_ammo_9x19_fmj"] = "ammo_9x19_fmj",
+		
+		["mag_16_ammo_9x19_pbp"] = "ammo_9x19_pbp", -- wpn_wather
+		["mag_16_ammo_9x19_fmj"] = "ammo_9x19_fmj",
+		
+		["mag_20_ammo_9x19_pbp"] = "ammo_9x19_pbp", -- wpn_beretta_m1, wpn_scorpion_kalibr
+		["mag_20_ammo_9x19_fmj"] = "ammo_9x19_fmj",
+	
+		["mag_30_ammo_9x19_pbp"] = "ammo_9x19_pbp", -- wpn_mp5, wpn_mp5_m2, wpn_mp5_m2a, wpn_mp7a3
+		["mag_30_ammo_9x19_fmj"] = "ammo_9x19_fmj",
+
+		["mag_32_ammo_9x19_pbp"] = "ammo_9x19_pbp", -- wpn_uzi
+		["mag_32_ammo_9x19_fmj"] = "ammo_9x19_fmj",
+		
+		["mag_60_ammo_9x19_pbp"] = "ammo_9x19_pbp", -- wpn_mp5sd
+		["mag_60_ammo_9x19_fmj"] = "ammo_9x19_fmj",
+		
+		["mag_64_ammo_9x19_pbp"] = "ammo_9x19_pbp", -- wpn_bizon_kalibr
+		["mag_64_ammo_9x19_fmj"] = "ammo_9x19_fmj",
+	},
+	
+	{ -- ammo_11.43x23
+	
+		["mag_6_ammo_11.43x23_fmj"] = "ammo_11.43x23_fmj", -- wpn_raging_bull
+		["mag_6_ammo_11.43x23_hydro"] = "ammo_11.43x23_hydro",
+	
+		["mag_7_ammo_11.43x23_fmj"] = "ammo_11.43x23_fmj", -- wpn_colt1911, wpn_colt_m1, wpn_sig220
+		["mag_7_ammo_11.43x23_hydro"] = "ammo_11.43x23_hydro",
+		
+		["mag_8_ammo_11.43x23_fmj"] = "ammo_11.43x23_fmj", -- wpn_desert_eagle, wpn_usp
+		["mag_8_ammo_11.43x23_hydro"] = "ammo_11.43x23_hydro",
+		
+		["mag_25_ammo_11.43x23_fmj"] = "ammo_11.43x23_fmj", -- wpn_kriss_super_v
+		["mag_25_ammo_11.43x23_hydro"] = "ammo_11.43x23_hydro",
+	},
+	
+	{ -- ammo_5.45x39
+		["mag_30_ammo_5.45x39_ap"] = "ammo_5.45x39_ap", -- wpn_abakan, wpn_abakan_m1, wpn_abakan_m2, wpn_aek971, wpn_ak74, wpn_ak74_m1, 
+		["mag_30_ammo_5.45x39_fmj"] = "ammo_5.45x39_fmj", -- wpn_ak74u, wpn_ak74u_m1, wpn_aks74m, wpn_fn2000_m1, wpn_groza_m1
+		["mag_30_ammo_5.45x39_izomorf"] = "ammo_5.45x39_izomorf",
+		
+		["mag_45_ammo_5.45x39_ap"] = "ammo_5.45x39_ap", -- wpn_groza_m1
+		["mag_45_ammo_5.45x39_fmj"] = "ammo_5.45x39_fmj", 
+		["mag_45_ammo_5.45x39_izomorf"] = "ammo_5.45x39_izomorf",
+	},
+
+	
+	{ -- ammo_5.56x45
+		["mag_ammo_7.62x25_p"] = "ammo_7.62x25_p", -- wpn_sig_m2
+		["mag_20_ammo_5.56x45_ap"] = "ammo_5.56x45_ap", 
+		
+		["mag_30_ammo_5.56x45_ss190"] = "ammo_5.56x45_ss190", -- wpn_abakan_kalibr, wpn_ak74_kalibr, wpn_ak74u_kalibr, wpn_aks74m_kalibr, wpn_famas_p3_sk1, wpn_fn200, wpn_fn200_sniper, wpn_tavor
+		["mag_30_ammo_5.56x45_ap"] = "ammo_5.56x45_ap", -- wpn_g36, wpn_g36_m1, wpn_groza_m3, wpn_l85, wpn_l85_m1, wpn_l85_m2, wpn_lr300, wpn_lr300_m1, wpn_m16a2_sk1, wpn_m16a2_sk12, wpn_sg552_sk1, wpn_sig550, wpn_sig_m1
+		
+		["mag_80_ammo_5.56x45_ss190"] = "ammo_5.56x45_ss190", -- wpn_m4
+		["mag_80_ammo_5.56x45_ap"] = "ammo_5.56x45_ap", 
+		
+		["mag_100_ammo_5.56x45_ss190"] = "ammo_5.56x45_ss190", -- wpn_xm8_para_sk2
+		["mag_100_ammo_5.56x45_ap"] = "ammo_5.56x45_ap", 
+	},
+	
+		
+	{ -- ammo_5.7x28
+		["mag_ammo_5.7x28_ss190"] = "ammo_5.7x28_ss190", -- wpn_p90
+	},
+	
+	{ -- ammo_9x39
+		["mag_7_ammo_9x39_sp5"] = "ammo_9x39_sp5", -- wpn_eagle_m1, wpn_eagle_m3
+		["mag_7_ammo_9x39_ap"] = "ammo_9x39_ap", 		
+		["mag_7_ammo_9x39_pab9"] = "ammo_9x39_pab9", 
+		["mag_7_ammo_9x39_izomorf"] = "ammo_9x39_izomorf",
+	
+		["mag_10_ammo_9x39_sp5"] = "ammo_9x39_sp5", -- wpn_vintorez
+		["mag_10_ammo_9x39_ap"] = "ammo_9x39_ap", 		
+		["mag_10_ammo_9x39_pab9"] = "ammo_9x39_pab9", 
+		["mag_10_ammo_9x39_izomorf"] = "ammo_9x39_izomorf",
+	
+		["mag_20_ammo_9x39_sp5"] = "ammo_9x39_sp5", -- wpn_groza, wpn_val, wpn_val_m1, wpn_val_m2, wpn_vintorez_m1
+		["mag_20_ammo_9x39_ap"] = "ammo_9x39_ap", 		
+		["mag_20_ammo_9x39_pab9"] = "ammo_9x39_pab9", 
+		["mag_20_ammo_9x39_izomorf"] = "ammo_9x39_izomorf",
+		
+		["mag_25_ammo_9x39_sp5"] = "ammo_9x39_sp5", -- wpn_vintorez_m2
+		["mag_25_ammo_9x39_ap"] = "ammo_9x39_ap", 		
+		["mag_25_ammo_9x39_pab9"] = "ammo_9x39_pab9", 
+		["mag_25_ammo_9x39_izomorf"] = "ammo_9x39_izomorf",
+		
+	},
+	
+	
+	{ -- ammo_7.62x25
+		["mag_ammo_7.62x25_p"] = "ammo_5.7x28_ss190", -- wpn_ppsh41_sk1
+		["mag_ammo_7.62x25_ps"] = "ammo_7.62x25_ps", 
+	},
+		
+	{ -- ammo_7.62x39
+		["mag_ammo_7.62x39_fmj"] = "ammo_7.62x39_fmj", -- wpn_aek973, wpn_ak47
+		["mag_ammo_7.62x39_ap"] = "ammo_7.62x39_ap", 
+		
+	},
+	
+	{ -- ammo_7.62x54
+		["mag_ammo_7.62x54_7h14"] = "ammo_7.62x54_7h14", -- wpn_svd, wpn_svd_m1, wpn_svu, wpn_svu_m1, wpn_walther_wa2000
+		["mag_ammo_7.62x54_ap"] = "ammo_7.62x54_ap",
+		["mag_ammo_7.62x54_7h1"] = "ammo_7.62x54_7h1",
+		
+		["mag_ammo_7.62x54_izomorf"] = "ammo_7.62x54_izomorf", -- only for wpn_walther_wa2000
+		
+	},
+	
+	{ -- ammo_7.62x54r
+		["mag_ammo_7.62x54r"] = "ammo_7.62x54r", -- wpn_pkm
+	},	
+	
+	{ -- ammo_12x7
+		["mag_ammo_12x76_zhekan"] = "ammo_12x76_zhekan", -- wpn_saiga12c
+		["mag_ammo_12x76_dart"] = " ammo_12x76_dart", 
+		
+		["mag_ammo_12x70_buck"] = " ammo_12x70_buck",
+		["mag_ammo_zhekan_izomorf"] = "ammo_zhekan_izomorf",
+		
+	},
+	
+	{ -- ammo_7.62x51
+		["mag_ammo_7.62x51_ap"] = "ammo_7.62x51_ap", -- wpn_hk417_sk1, wpn_sr25_mk11_mod0_sk1
+		["mag_ammo_7.62x51_fmj"] = "ammo_7.62x51_fmj",
+	},
+	
+	{ -- ammo_12.7x108
+		["mag_ammo_12.7x108"] = "ammo_12.7x108", -- wpn_vuhlop, wpn_b94
+	},
+	
+	
+}
+
+function on_item_to_ruck(obj)
+	if this.is_mag(obj) then
+		btn_raz()
+	end
+end
+
+function on_inventory_open()
+	btn_raz()
+end
+
+function is_mag(obj)
+	if obj and obj:is_ammo()then
+		for i,t in ipairs(ammo_mag_pairs) do
+			for l,t1 in pairs(t) do
+				if l == obj:section() then return true end
+			end
+		end
+	end
+	return false
+end
+
+--запрет на группировку
+
+function btn_raz()
+	local obj
+
+	for i=0, db.actor:object_count()-1 do
+		obj = db.actor:object(i)
+		if this.is_mag(obj) then
+			set_item_ungroupable( obj )
+		end
+	end
+	--db.actor:invalidate_inventory()
+	--update_inventory_window()
+end
+
+
+
+function spawn_ammo_in_inv( sect, box_size, who )
+  if not who then who = db.actor end
+  local pos, lvid, gvid, id
+  if type( who.id ) == "function" then
+    pos, lvid, gvid, id =
+      who:position(),
+      who:level_vertex_id(),
+      who:game_vertex_id(),
+      who:id()
+  else
+    pos, lvid, gvid, id =
+      who.position,
+      who.m_level_vertex_id,
+      who.m_game_vertex_id,
+      who.id
+  end
+  return alife():create_ammo( sect, pos, lvid, gvid, id, box_size )
+end
+
+local ammo_load_snd = sound_object( "razgruzka\\ammo_load" )
+
+-- зарядка магазинов
+
+function inv_drag_drop( obj, me ) -- "me" принимает, "obj" отдает
+	local mag_found, ammo_found
+	if me:id() == obj:id() then return end
+	if this.is_mag(obj) and me:is_ammo() and not(this.is_mag(me)) then -- из магазина в пачки
+		if string.find(obj:section(), me:section())  then
+			me:set_ammo_box_curr( me:get_current_ammo() + obj:get_current_ammo() )
+			obj:set_ammo_box_curr( 0 )
+			ammo_load_snd:play( db.actor, 0, sound_object.s2d )
+			--btn_raz()
+		end
+		return
+	end
+	if this.is_mag(me) and this.is_mag(obj) and me:section() == obj:section() and not(me:get_current_ammo() == me:get_ammo_box_size()) then -- из магазина в магазин
+		local need_ammo = me:get_ammo_box_size() - me:get_current_ammo()
+		if need_ammo < obj:get_current_ammo() then
+			me:set_ammo_box_curr( me:get_ammo_box_size() )
+			obj:set_ammo_box_curr( obj:get_current_ammo() - need_ammo )
+		else
+			me:set_ammo_box_curr( me:get_current_ammo() + obj:get_current_ammo() )
+			obj:set_ammo_box_curr( 0 )				
+		end
+		ammo_load_snd:play( db.actor, 0, sound_object.s2d )
+		--btn_raz()
+		return 
+	end
+	
+	
+	--if me:get_current_ammo() == me:get_ammo_box_size() then return end -- из пачки в магазин
+	for i,t in ipairs(ammo_mag_pairs) do
+		for l,t1 in pairs(t) do
+			if l == me:section() then
+				log3( "!![%s] I found mag [%s]", script_name(), me:section() )
+				mag_found = true
+			end
+			if t1 == obj:section() then
+				log3( "!![%s] I found ammo [%s]", script_name(), obj:section() )
+				ammo_found = true
+			end
+		end
+		if ammo_found and mag_found then
+			--if not (me:get_current_ammo() == 0) and not (string.find(me:section(), obj:section())) then return end
+			if  not (string.find(me:section(), obj:section())) then  --подмена под нужный калибр
+				local s, e = string.find(me:section(), "ammo")
+				local new_mag = string.sub(me:section(), 0, s-1) .. obj:section() 
+				if me:get_current_ammo() ~= 0 then
+					spawn_ammo_in_inv(string.sub(me:section(), s), me:get_current_ammo(), db.actor)
+					me:set_ammo_box_curr( 0 )	
+				end
+				local need_ammo = me:get_ammo_box_size() - me:get_current_ammo()
+				log3( "!![%s] New mag will be [%s]", script_name(), new_mag )
+				if need_ammo < obj:get_current_ammo() then
+					spawn_ammo_in_inv(new_mag, me:get_ammo_box_size(), db.actor)
+					obj:set_ammo_box_curr( obj:get_current_ammo() - need_ammo )	
+				else
+					spawn_ammo_in_inv(new_mag, obj:get_current_ammo(), db.actor)
+					amk.remove_item_from_inventory( obj )
+				end
+				ammo_load_snd:play( db.actor, 0, sound_object.s2d )
+				amk.remove_item_from_inventory( me )			
+				--btn_raz()
+				return
+			end
+			local need_ammo = me:get_ammo_box_size() - me:get_current_ammo()
+			if need_ammo < obj:get_current_ammo() then
+				me:set_ammo_box_curr( me:get_ammo_box_size() )
+				obj:set_ammo_box_curr( obj:get_current_ammo() - need_ammo )
+			else
+				me:set_ammo_box_curr( me:get_current_ammo() + obj:get_current_ammo() )
+				amk.remove_item_from_inventory( obj )				
+			end
+			ammo_load_snd:play( db.actor, 0, sound_object.s2d )
+			--btn_raz()
+			return
+		else
+			mag_found = false
+			ammo_found = false
+		end
+	end
+end

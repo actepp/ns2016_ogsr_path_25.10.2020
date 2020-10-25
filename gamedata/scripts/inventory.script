@@ -1,0 +1,84 @@
+--KRodin (c) 2020: оптимизировал скрипт, теперь здесь нет лагов из за многочисленных переборов инвентаря, и сопутствующих проблем с окнами обыска и тп.
+
+
+belt = {}
+belt_id = {}
+
+
+local unique_sect =
+{
+["af_caterpillar"] = true,
+["af_arhara_globus"] = true,
+["af_green"] = true,
+["af_dummy_spring_red"] = true,
+["af_dummy_battery_red"] = true,
+["af_dummy_pellicle_red"] = true,
+["af_babka_3"] = true,
+["af_babka_4"] = true,
+["af_armor_4"] = true,
+["af_cry_3"] = true,
+["af_dik_4"] = true,
+["af_kol_3"] = true,
+["af_kol_4"] = true,
+["af_pudd_4"] = true,
+["af_spirit_3"] = true,
+["af_spirit_4"] = true,
+["af_gold_fish"] = true,
+["af_eye_voron"] = true
+}
+
+--собирает инфу о дупликатах на поясе
+--возвращает таблицу вида [секция арта] = <количество лишних артов>
+local function check_duplicate()
+	local result = {}
+	for k, v in pairs(belt) do
+		if v > 2 then
+			result[k] = v - 2
+		end
+	end
+	return result
+end
+
+--оставляет на поясе по одному(фиг,теперь двум) артефакту каждого вида
+local function remove_duplicate()
+	local t = check_duplicate()
+	for id, _ in pairs(belt_id) do
+		local obj = level.object_by_id(id)
+		if obj then
+			local sect = obj:section()
+			if unique_sect[sect] and t[sect] and t[sect] > 0 then
+				db.actor:move_to_ruck(obj)
+				update_inventory_window()
+				local text = "Убраны лишние артефакты "..game.translate_string(amk.get_inv_name(sect)).." с пояса"
+				news_manager.send_tip(db.actor, text, nil, nil, nil)
+				t[sect] = t[sect] - 1
+			end
+		end
+	end
+end
+
+
+--Вызывается из биндера актора на первом апдейте и при переносе предмета на пояс.
+function rescan_belt()
+  belt     = {}
+  belt_id  = {}
+  for i = 0, db.actor:belt_count() - 1 do
+    local item = db.actor:item_on_belt( i )
+    local sect = item:section()
+    belt[ sect ] = ( belt[ sect ] or 0 ) + 1
+    belt_id[ item:id() ] = true
+  end
+  --
+  level.add_call(function() return true end, remove_duplicate)
+end
+
+--Вызывается из биндера актора из каллбека на дроп предмета, перемещения в слот, перемещения в рюкзак
+function on_belt_drop( item )
+  if belt_id[ item:id() ] then
+    rescan_belt()
+  end
+end
+
+
+function on_inventory_info() --вызывается из кучи мест, надо удалить.
+end

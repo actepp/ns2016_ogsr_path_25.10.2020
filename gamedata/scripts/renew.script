@@ -1,0 +1,16 @@
+--renew
+function renew()
+	for i = 1, 65535 do
+	local obj = alife():object(i)
+    if obj.story_id == 32-- and health <=2)
+	then
+		amk.send_tip("123", "123", 1, 15, "common_channel")
+        if (_g.IsStalker(obj)) then
+            local tbl = amk.read_stalker_params(obj)
+            tbl.health = health
+            tbl.updhealth = health
+            amk.write_stalker_params(tbl, obj)
+        end
+    end
+end
+end

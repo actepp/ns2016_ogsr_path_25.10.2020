@@ -1,0 +1,18 @@
+function zamena()
+	if db.actor:dont_has_info( "mil_lukash_find_dinamit_have" ) then return end
+	local item = db.actor:object( "dynamite" )
+	local obj = item and alife():object( item:id() )
+	if obj then
+		sol_utils.send_tip("%c[255,160,160,160]Внутренний голос\\n%c[255,0,204,0]Овраг, стенка, всё как Лукаш говорил... Значит я на месте.\\nОсталось динамит под стеночку уложить аккуратно, чтоб наверняка.", nil, nil, 30000 )
+		sol_sound.sms("characters_voice\\ozvuchka\\strelok_dynamit")
+	db.actor:give_info_portion("dynamite_srabotal")
+	end
+end
+
+function krysbum()
+	if db.actor:dont_has_info( "dynamite_srabotal" ) then return end
+		lc_control.on_info( "add_new_mil_darkvalley" )
+		sak.del_zaglywka()
+		db.actor:give_info_portion("mil_lukash_find_dinamit_done")
+		db.actor:disable_info_portion("dynamite_srabotal")
+	end

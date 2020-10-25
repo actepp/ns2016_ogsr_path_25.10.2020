@@ -1,0 +1,27 @@
+function attach( sm )
+  sm:subscribe({ signal = "on_spawn", fun = this.on_spawn })
+end
+
+local visited_outdoor_levels = {}
+
+function on_spawn( data )
+	crow_spawning()
+end 
+
+function crow_spawning()
+	local levelName = object_level_name( db.actor )
+	if not (isIndoor( levelName ) ) then
+		local founded = false
+		if visited_outdoor_levels ~= nil then
+			for i, v in ipairs(visited_outdoor_levels) do
+				if v == levelName then
+					founded = true
+				end
+			end
+		end
+		if not founded then
+			ogse.spawn_crow()
+			table.insert(visited_outdoor_levels, levelName)
+		end
+	end
+end

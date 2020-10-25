@@ -1,0 +1,30 @@
+function test(npc)
+local rnd = math.random
+local pk = get_netpk(npc)
+if pk and pk:isOk() then
+	local data = pk:get()
+	if data.money and data.money > 2000 and data.money < 10000 then
+		data.money = data.money - 2000
+		alife():create("medkit", npc.position, npc.m_level_vertex_id, npc.m_game_vertex_id, npc.id)
+		alife():create("medkit", npc.position, npc.m_level_vertex_id, npc.m_game_vertex_id, npc.id)
+--		amk.send_tip(" 2 аптечки купил нпс "..npc.character_name, "инфа о покупке", 1, 15, "common_channel")
+	elseif data.money >= 10000 then
+	if (rnd() < 0.5) then
+	alife():create("wpn_fn2000", npc.position, npc.m_level_vertex_id, npc.m_game_vertex_id, npc.id)
+	data.money = data.money - 10000
+--	amk.send_tip("Этот чувак купил фн 2000 "..npc.character_name, "инфа о покупке", 1, 15, "common_channel")
+	else 
+	alife():create("wpn_m16a2_sk1", npc.position, npc.m_level_vertex_id, npc.m_game_vertex_id, npc.id)
+	data.money = data.money - 10000
+--	amk.send_tip("Этот чувак купил Эмку "..npc.character_name, "инфа о покупке", 1, 15, "common_channel")
+	end
+	pk:set(data)
+--	amk.send_tip(" 2 аптечки купил нпс "..npc.character_name, "инфа о покупке", 1, 15, "common_channel")
+end	
+
+
+
+
+--local new_ammo = alife():create_ammo(ammo_sect, npc.position, npc.m_level_vertex_id, npc.m_game_vertex_id, npc.id, box_size)
+end
+end
